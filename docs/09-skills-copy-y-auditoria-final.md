@@ -87,3 +87,12 @@ VISITA (hero: quién, qué, cómo contactar) → CONFIANZA (firma con matrícula
 - **Áreas:** 7 hojas reales del árbol, elegidas entre las más limpias del calcado (`LogoLeaf`, generadas desde `scripts/tree_to_ts.py`).
 - **Cierre:** el árbol del logo en verde agua.
 - Lighthouse móvil: 96 / 100 / 100 / 100; responsive y pruebas de interacción OK.
+
+## 10. Sexta iteración: conversión internacional, blog y publicación en GitHub Pages
+- **Conversor horario** (`components/TimezoneHelper.tsx`): en la sección online, la franja de atención (L–V 8–20 h de Argentina) se muestra en la hora local de quien visita. Detecta la zona horaria del navegador y permite elegir país. No guarda ni envía datos.
+- **Blog** (`/blog`): 3 artículos publicados (`data/blog.ts`), con `BlogPosting` y `BreadcrumbList` en JSON-LD, sitemap, enlaces internos, una llamada a la acción por intención y un aviso de que no reemplazan una consulta. Enlace «Blog» en el menú y en el pie.
+- **Barra de contacto móvil** (`MobileActionBar`): WhatsApp y «Cómo llegar» fijos abajo en celulares, después del inicio. En celular reemplaza al botón flotante; en escritorio queda el flotante.
+- **Página 404** con las raíces del logo, **manifiesto** (`/manifest.webmanifest`) e imagen para compartir fija (`/images/og.png`).
+- **Preguntas leídas:** el navegador recuerda qué preguntas frecuentes abriste y las marca como «leída». Se guarda solo en `localStorage`.
+- **GitHub Pages:** `next.config.ts` exporta un sitio estático con `GITHUB_PAGES=true` y `basePath` `/licnicoe`. El workflow `.github/workflows/pages.yml` publica en cada push a `main`. Todas las rutas de `/public` pasan por `asset()` para respetar el `basePath`.
+- **Pruebas:** Lighthouse móvil: inicio 95–96 / 100 / 100 / 100, blog 98 / 100 / 100 / 100, artículo 94 / 96–100 / 100 / 100 (el contraste depende del instante de la intro; en 3 corridas posteriores dio 100). Exportación estática probada bajo `/licnicoe/` sin recursos 404. Responsive y pruebas de interacción OK.

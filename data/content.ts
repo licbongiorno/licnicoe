@@ -6,6 +6,7 @@ export const nav = [
   { href: "/#enfoque", label: "Enfoque" },
   { href: "/#areas", label: "Áreas de trabajo" },
   { href: "/#online", label: "Atención online" },
+  { href: "/blog", label: "Blog" },
   { href: "/#contacto", label: "Contacto" },
 ];
 

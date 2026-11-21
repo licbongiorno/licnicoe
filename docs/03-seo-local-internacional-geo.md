@@ -7,7 +7,7 @@
 | Canonical | `alternates.canonical` en cada página |
 | Sitemap XML | `app/sitemap.ts` → `/sitemap.xml` |
 | Robots | `app/robots.ts` → `/robots.txt` |
-| Open Graph + Twitter Card | layout + imagen generada `app/opengraph-image.tsx` (1200×630) |
+| Open Graph + Twitter Card | layout + `public/images/og.png` (1200×630, con la foto real) |
 | Jerarquía H1/H2/H3 | 1 H1 por página; secciones con H2; tarjetas con H3 |
 | JSON-LD | `Person`, `ProfessionalService`, `WebSite` (todas las páginas), `FAQPage` (inicio y online), `BreadcrumbList` (páginas internas) |
 | Imágenes | `next/image` (AVIF/WebP, lazy, tamaños responsivos); ilustraciones en SVG |

@@ -50,7 +50,8 @@ export function Header() {
   }, [open]);
 
   const solid = scrolled || open;
-  const isCurrent = (href: string) => pathname === "/" && href.endsWith(`#${active}`);
+  const isCurrent = (href: string) =>
+    href === "/blog" ? pathname.startsWith("/blog") : pathname === "/" && href.endsWith(`#${active}`);
 
   return (
     <header
@@ -68,7 +69,7 @@ export function Header() {
         </Link>
 
         <nav aria-label="Principal" className="hidden lg:block">
-          <ul className="flex items-center gap-7 text-[0.92rem]">
+          <ul className="flex items-center gap-6 text-[0.92rem]">
             {nav.slice(1).map((item) => (
               <li key={item.href}>
                 <Link

@@ -9,7 +9,7 @@ Landing page profesional: psicoterapia psicoanalítica e integrativa para adulto
 ## Estructura
 ```
 app/                     rutas: /, /terapia-online-en-espanol, /orientacion-profesional, /privacidad
-                         + sitemap.xml, robots.txt, opengraph-image, icon.svg
+                         + /blog y /blog/[slug] · sitemap.xml, robots.txt, manifest, icon.png, 404
                          + /marca (manual de identidad, no indexado)
 components/              Header, Sections (todas las secciones), ContactButton, FloatingWhatsApp,
                          TreeArt (árbol del hero, raíces, ramas, brotes, floración, isotipo),
@@ -68,6 +68,15 @@ npm run build && npm start
 4. **Deploy.** Cada push a `main` vuelve a publicar automáticamente.
 5. **Dominio:** comprar en NIC Argentina (.com.ar) u otro registrador → en Vercel *Settings → Domains* agregar `tudominio.com.ar` y `www.tudominio.com.ar` → cargar en el registrador los DNS que indica Vercel (registro A `76.76.21.21` para el raíz y CNAME `cname.vercel-dns.com` para `www`, o los valores que muestre Vercel en ese momento). HTTPS se activa solo.
 6. Actualizar `NEXT_PUBLIC_SITE_URL` con el dominio final y redeploy.
+
+## Publicar en GitHub Pages (alternativa gratuita, como las demás webs)
+1. En GitHub: **Settings → Pages → Build and deployment → Source: GitHub Actions** (una sola vez).
+2. Cada push a `main` ejecuta `.github/workflows/pages.yml` y publica en `https://licbongiorno.github.io/licnicoe/`.
+3. Para probar la exportación en local:
+
+```bash
+GITHUB_PAGES=true NEXT_PUBLIC_BASE_PATH=/licnicoe NEXT_PUBLIC_SITE_URL=https://licbongiorno.github.io/licnicoe npm run build
+```
 
 ## Search Console
 1. search.google.com/search-console → *Agregar propiedad* → tipo **Dominio** (verificación por DNS TXT en el registrador) o **Prefijo de URL** (usar `NEXT_PUBLIC_GSC_VERIFICATION`).
