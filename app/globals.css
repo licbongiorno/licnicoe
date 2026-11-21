@@ -1,0 +1,115 @@
+@import "tailwindcss";
+
+@theme {
+  --color-aqua: #b7ddd4;
+  --color-aqua-soft: #dcefea;
+  --color-beige: #f3eadf;
+  --color-sage: #788f80;
+  --color-sage-deep: #4f6457; /* salvia ajustada: contraste AA sobre fondos claros */
+  --color-charcoal: #272b29;
+  --color-ink-soft: #4a504d;
+  --color-paper: #faf9f5;
+
+  --font-display: var(--font-playfair), Georgia, "Times New Roman", serif;
+  --font-serif: var(--font-lora), Georgia, serif;
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-charcoal);
+    font-family: var(--font-sans);
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+  ::selection {
+    background: var(--color-aqua);
+    color: var(--color-charcoal);
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-charcoal);
+    outline-offset: 3px;
+    border-radius: 6px;
+  }
+}
+
+@layer components {
+  .container-x {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+  @media (min-width: 768px) {
+    .container-x { padding-inline: 2rem; }
+  }
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.75rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-weight: 600;
+    color: var(--color-sage-deep);
+  }
+  .h-section {
+    font-family: var(--font-display);
+    font-weight: 500;
+    line-height: 1.12;
+    letter-spacing: -0.01em;
+    font-size: clamp(1.9rem, 1.2rem + 2.6vw, 3rem);
+    text-wrap: balance;
+  }
+  .lead {
+    font-family: var(--font-serif);
+    font-size: clamp(1.05rem, 1rem + 0.3vw, 1.2rem);
+    line-height: 1.7;
+    color: var(--color-ink-soft);
+  }
+}
+
+/* Revelado suave al hacer scroll — desactivado si el usuario prefiere menos movimiento */
+.reveal {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+.no-js .reveal { opacity: 1; transform: none; }
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+.tree-draw path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: draw 2.6s ease-out forwards;
+}
+.tree-draw .root path { animation-delay: 0.2s; }
+.tree-draw .branches path { animation-delay: 0.9s; }
+@keyframes bloom {
+  from { opacity: 0; transform: scale(0.4); }
+  to { opacity: 1; transform: scale(1); }
+}
+.tree-draw .flowers circle {
+  transform-box: fill-box;
+  transform-origin: center;
+  opacity: 0;
+  animation: bloom 1s ease-out forwards;
+  animation-delay: 2.2s;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+  .tree-draw path { stroke-dashoffset: 0; animation: none; }
+  .tree-draw .flowers circle { opacity: 1; animation: none; }
+}
