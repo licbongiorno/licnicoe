@@ -41,6 +41,9 @@ export function baseGraph() {
         name: `${site.person.displayName} · Psicólogo ${site.person.license}`,
         description: "Psicoterapia psicoanalítica e integrativa para adultos, presencial en Córdoba y online en español. Orientación y desarrollo profesional.",
         url: site.url,
+        logo: `${site.url}/brand/isotipo.svg`,
+        image: `${site.url}/opengraph-image`,
+        knowsLanguage: site.person.languages,
         founder: { "@id": personId },
         employee: { "@id": personId },
         address: {

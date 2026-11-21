@@ -4,14 +4,20 @@
 
 Landing page profesional: psicoterapia psicoanalítica e integrativa para adultos, presencial en Córdoba (barrio Juniors) y online en español.
 
-**Stack:** Next.js 16 (App Router, salida estática) · React 19 · TypeScript · Tailwind CSS 4 · Lucide. Sin otras dependencias.
+**Stack:** Next.js 16 (App Router, salida estática) · React 19 · TypeScript · Tailwind CSS 4 · Lucide. Tipografías Cormorant Garamond + Manrope (auto-hospedadas). Animaciones en SVG + CSS, sin librerías.
 
 ## Estructura
 ```
 app/                     rutas: /, /terapia-online-en-espanol, /orientacion-profesional, /privacidad
                          + sitemap.xml, robots.txt, opengraph-image, icon.svg
+                         + /marca (manual de identidad, no indexado)
 components/              Header, Sections (todas las secciones), ContactButton, FloatingWhatsApp,
-                         TreeArt (ilustración SVG), Logo, PageIntro, JsonLd, Analytics, Reveal
+                         TreeArt (árbol del hero, raíces, ramas, brotes, floración, isotipo),
+                         PageIntro, JsonLd, Analytics, Reveal
+public/brand/            logotipos e isotipos en SVG (horizontal, vertical, negativo, mono, favicon, avatar)
+public/llms.txt          ficha profesional para buscadores con IA
+scripts/                 generadores del logotipo (wordmark.py, brand.py)
+.agents/skills/          skills instaladas con find-skills (ver docs/09)
 data/site.ts             ⭐ CONFIGURACIÓN CENTRAL (datos, WhatsApp, tarifas, fotos, enlaces)
 data/content.ts          todos los textos de la web
 lib/whatsapp.ts          enlaces y mensajes precargados por intención
@@ -25,7 +31,7 @@ docs/                    estrategia, SEO, WhatsApp, blog, plan 90 días, cobros,
 Todo está en `data/site.ts`. Un valor `null` significa "pendiente" y **no se muestra**.
 - **WhatsApp:** `whatsapp.number` (formato `549` + área + número) y `whatsapp.enabled`.
 - **Tarifa internacional:** `fees.international.amount` / `confirmed`.
-- **Fotos:** copiar el archivo a `public/images/` y completar `photos.portrait` / `photos.profile`.
+- **Fotos:** copiar el retrato a `public/images/nicolas-espindola-retrato.jpg` y poner `photos.portrait: "/images/nicolas-espindola-retrato.jpg"`. Para el avatar del hero, una versión cuadrada en `photos.profile`.
 - **Google Business, Instagram, email:** `links.*`, `email`.
 - **Mapa:** pegar la URL de "Insertar mapa" de Google Maps en `location.mapEmbedUrl`.
 
@@ -75,7 +81,8 @@ Ver `docs/02-whatsapp-business.md`. Si se cambia de número, solo editar `data/s
 ## Checklist de publicación
 - [ ] Confirmar número de WhatsApp (hoy: +54 9 351 595 9914) y probar un botón desde el celular
 - [ ] Dominio comprado y conectado; `NEXT_PUBLIC_SITE_URL` actualizado
-- [ ] Fotos profesionales reales cargadas (`site.photos`)
+- [ ] Retrato real cargado (`public/images/nicolas-espindola-retrato.jpg` + `site.photos.portrait`)
+- [ ] Verificar el sitio en Bing Webmaster Tools y enviarlo a Brave Search (visibilidad en ChatGPT, Copilot y Claude)
 - [ ] Tarifa internacional confirmada o texto de "referencia" revisado
 - [ ] Revisar política de privacidad con asesoría legal
 - [ ] Verificar denominación del colegio en `person.licenseBody`
@@ -94,8 +101,8 @@ Ver `docs/02-whatsapp-business.md`. Si se cambia de número, solo editar `data/s
 
 ## Validación realizada
 - `npm run build`: OK, 10 rutas estáticas, sin errores de TypeScript.
-- Lighthouse 12 (móvil, servidor local de producción): Performance 92 · Accesibilidad 100 · Buenas prácticas 100 · SEO 100. Volver a medir en el dominio final.
-- Sin desbordamiento horizontal a 390 px; menú móvil accesible (Escape, `aria-expanded`); sin errores de consola.
+- Lighthouse 12 (móvil, servidor local de producción): Inicio 95 · 100 · 100 · 100; Terapia online 93 · 100 · 100 · 100. Volver a medir en el dominio final.
+- Responsive verificado a 360, 390, 430, 768, 1024, 1440 y 1920 px; pruebas de menú, scrollspy, FAQ, teclado, movimiento reducido y sin JavaScript (detalle en `docs/09`).
 
 ## Documentación estratégica
 1. `docs/01-auditoria-y-estrategia.md` — auditoría, CRO internacional, sistema de marca
@@ -105,3 +112,5 @@ Ver `docs/02-whatsapp-business.md`. Si se cambia de número, solo editar `data/s
 5. `docs/05-plan-90-dias-y-publicidad.md`
 6. `docs/06-regulacion-y-cobros-internacionales.md`
 7. `docs/07-analitica-y-metricas.md`
+8. `docs/08-identidad-y-design-system.md` — logotipo, paleta, tipografía, tokens, movimiento
+9. `docs/09-skills-copy-y-auditoria-final.md` — skills usadas, variantes de titulares, auditoría y pruebas

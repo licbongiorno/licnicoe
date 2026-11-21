@@ -101,7 +101,8 @@ export const site = {
   },
 
   photos: {
-    /** Retrato principal (hero / sobre mí). Reemplazar por la foto profesional real en /public/images. */
+    /** Retrato principal (sección Sobre mí). Subir el archivo a /public/images/nicolas-espindola-retrato.jpg
+     *  y cambiar este valor a "/images/nicolas-espindola-retrato.jpg". Encuadre ideal 4:5, mínimo 1200 px de ancho. */
     portrait: null as string | null,
     office: null as string | null,
     /** Foto de perfil pequeña. La actual es provisoria (baja resolución). */

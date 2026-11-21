@@ -84,7 +84,7 @@ Para SEO/GEO esto es importante: los motores y asistentes de IA cruzan fuentes. 
 
 La identidad anterior (cabeza + garabato sobre verde agua) evoluciona así: la forma orgánica verde agua se mantiene como contenedor del isotipo; el garabato pasa a ser el trazo de las raíces.
 
-### Paleta
+### Paleta (ver también doc 08)
 | Token | Hex | Uso |
 |---|---|---|
 | `aqua` | #B7DDD4 | Fondos de identidad, isotipo, sección online |
@@ -95,10 +95,7 @@ La identidad anterior (cabeza + garabato sobre verde agua) evoluciona así: la f
 | `paper` | #FAF9F5 | Fondo general |
 
 ### Tipografía
-- **Playfair Display** (400/500): títulos editoriales.
-- **Lora** (normal/itálica): bajadas, citas y textos conceptuales.
-- **Inter**: navegación, botones, datos funcionales.
-Se cargan con `next/font` (auto-hospedadas, sin solicitudes a Google en tiempo de ejecución, `display: swap`).
+Actualizada en la segunda iteración: **Cormorant Garamond** (títulos, citas, la frase) + **Manrope** (lectura y UI). Detalle y justificación en `docs/08-identidad-y-design-system.md`.
 
 ### Dirección fotográfica (para la sesión de fotos)
 - Luz natural lateral, tonos cálidos, fondo neutro o verde suave; sin bata ni escenografía clínica.

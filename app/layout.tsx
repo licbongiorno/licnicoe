@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Inter, Lora, Playfair_Display } from "next/font/google";
+import { Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import { site } from "@/data/site";
 import { Header } from "@/components/Header";
@@ -10,9 +10,14 @@ import { Analytics } from "@/components/Analytics";
 import { JsonLd } from "@/components/JsonLd";
 import { baseGraph } from "@/lib/schema";
 
-const playfair = Playfair_Display({ subsets: ["latin"], variable: "--font-playfair", display: "swap", weight: ["400", "500"] });
-const lora = Lora({ subsets: ["latin"], variable: "--font-lora", display: "swap", style: ["normal", "italic"] });
-const inter = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swap" });
+const cormorant = Cormorant_Garamond({
+  subsets: ["latin"],
+  variable: "--font-cormorant",
+  display: "swap",
+  weight: ["500", "600"],
+  style: ["normal", "italic"],
+});
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", display: "swap" });
 
 const title = "Psicólogo en Córdoba y online en español | Lic. Nicolás Espíndola MP 11138";
 const description =
@@ -43,8 +48,11 @@ export const viewport: Viewport = { themeColor: "#faf9f5", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${playfair.variable} ${lora.variable} ${inter.variable}`}>
+    <html lang="es-AR" className={`${cormorant.variable} ${manrope.variable}`}>
       <body>
+        <noscript>
+          <style>{`.phrase .rise,.phrase .fall,.blossom .bud{opacity:1}.phrase .grow{stroke-dashoffset:0}.phrase .ground-draw{transform:none}`}</style>
+        </noscript>
         <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-paper">
           Saltar al contenido
         </a>

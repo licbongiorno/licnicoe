@@ -37,13 +37,13 @@ export default function Page() {
         <div className="container-x">
           <ul className="grid gap-4 sm:grid-cols-2">
             {blocks.map((b) => (
-              <li key={b.title} className="rounded-3xl bg-beige p-8">
+              <li key={b.title} className="lift rounded-[var(--radius-panel)] bg-beige p-8">
                 <h2 className="font-display text-2xl font-medium">{b.title}</h2>
                 <p className="mt-3 leading-relaxed text-ink-soft">{b.text}</p>
               </li>
             ))}
           </ul>
-          <div className="mt-12 grid gap-8 rounded-3xl border border-charcoal/10 p-8 md:grid-cols-2 md:p-12">
+          <div className="mt-12 grid gap-8 rounded-[var(--radius-panel)] border border-charcoal/10 p-8 md:grid-cols-2 md:p-12">
             <div>
               <h2 className="font-display text-2xl font-medium">Cómo trabajamos</h2>
               <p className="mt-4 leading-relaxed text-ink-soft">

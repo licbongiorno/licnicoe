@@ -5,7 +5,7 @@ import { useEffect } from "react";
 /** Un único IntersectionObserver para todos los elementos .reveal (sin librerías). */
 export function RevealObserver() {
   useEffect(() => {
-    const els = document.querySelectorAll<HTMLElement>(".reveal");
+    const els = document.querySelectorAll<HTMLElement>(".reveal-target");
     if (!("IntersectionObserver" in window)) {
       els.forEach((el) => el.classList.add("is-visible"));
       return;
@@ -18,7 +18,7 @@ export function RevealObserver() {
             io.unobserve(e.target);
           }
         }),
-      { rootMargin: "0px 0px -8% 0px" }
+      { rootMargin: "0px 0px -20% 0px" }
     );
     els.forEach((el) => io.observe(el));
     return () => io.disconnect();

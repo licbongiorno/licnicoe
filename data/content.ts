@@ -10,7 +10,7 @@ export const nav = [
 ];
 
 export const hero = {
-  eyebrow: site.brand.tagline,
+  subtitle: site.brand.tagline,
   title: "Hay cosas que necesitan ser comprendidas antes de poder transformarse",
   description:
     "Psicoterapia psicoanalítica e integrativa para adultos. Un espacio de escucha, comprensión y construcción de nuevas posibilidades.",
@@ -39,7 +39,7 @@ export const about = {
 export const approach = {
   title: "Un espacio de análisis y transformación personal",
   intro:
-    "La terapia no es un lugar donde alguien te dice qué hacer. Es un espacio para hacerse preguntas, cuestionarse y encontrar la propia verdad.",
+    "La terapia es también un espacio para hacerse preguntas, cuestionarse y encontrar la propia verdad. Nadie llega con un manual de instrucciones, y nadie te va a entregar uno.",
   explainers: [
     {
       title: "Una perspectiva psicoanalítica",
@@ -59,6 +59,15 @@ export const approach = {
     { n: "02", title: "Desarrollar", text: "Reconocer recursos, posibilidades y nuevas perspectivas." },
     { n: "03", title: "Acompañar", text: "Un vínculo terapéutico basado en la escucha y la calidez." },
     { n: "04", title: "Transformar", text: "Abrir alternativas y nuevas formas de posicionarte frente a tu vida." },
+  ],
+};
+
+export const phrase = {
+  top: "Lo que el árbol tiene de florido",
+  bottom: "vive de lo que tiene sepultado",
+  reading: [
+    "En el árbol, las raíces sostienen. En una vida, ese lugar lo ocupan la historia, lo vivido y aquello que todavía no encontró palabras.",
+    "Lo que florece se alimenta de ahí. Por eso el trabajo empieza abajo, comprendiendo, y desde esa comprensión se abren otras posibilidades.",
   ],
 };
 

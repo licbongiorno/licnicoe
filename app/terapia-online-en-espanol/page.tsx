@@ -27,7 +27,7 @@ export default function Page() {
       />
       <div className="container-x -mt-6 mb-16 flex flex-col gap-3 sm:flex-row">
         <ContactButton intent="international" location="online-page-top">Consultar desde el exterior</ContactButton>
-        <ContactButton intent="online" variant="secondary" location="online-page-top-ar">Vivo en Argentina</ContactButton>
+        <ContactButton intent="online" variant="outline" location="online-page-top-ar">Vivo en Argentina</ContactButton>
       </div>
       <Online />
       <Faq />
