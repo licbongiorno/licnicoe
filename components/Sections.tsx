@@ -4,7 +4,8 @@ import { Clock, Globe2, Headphones, MapPin, ShieldCheck, Video, Wifi, Plus } fro
 import { site } from "@/data/site";
 import { hero, about, approach, phrase, areas, online, presencial, coverage, faq, closing } from "@/data/content";
 import { ContactButton } from "./ContactButton";
-import { HeroTree, RootsMotif, BranchGlyph, Sprout, Blossom, Isotipo } from "./TreeArt";
+import { RootsMotif, BranchGlyph, Sprout, Blossom } from "./TreeArt";
+import { BrandTree } from "./BrandTree";
 
 /* =========================================================
    HERO — el árbol completo
@@ -19,13 +20,13 @@ export function Hero() {
       />
       <div className="container-x relative grid items-center gap-x-16 gap-y-10 pt-10 pb-16 md:pt-16 lg:min-h-[calc(100svh-4.5rem)] lg:grid-cols-[1.2fr_0.8fr] lg:py-12">
         <div>
-          <p className="label">{hero.subtitle}</p>
-          <h1 id="hero-title" className="display mt-5 text-[length:var(--text-step-4)]">
+          <p className="label build" style={{ ["--i" as string]: 0 }}>{hero.subtitle}</p>
+          <h1 id="hero-title" className="display build-soft mt-5 text-[length:var(--text-step-4)]">
             {hero.title}
           </h1>
-          <p className="mt-7 max-w-[34rem] text-[1.08rem] leading-relaxed text-ink-soft">{hero.description}</p>
+          <p className="build mt-7 max-w-[34rem] text-[1.08rem] leading-relaxed text-ink-soft" style={{ ["--i" as string]: 2 }}>{hero.description}</p>
 
-          <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
+          <div className="build mt-9 flex flex-col gap-3 sm:flex-row sm:items-center" style={{ ["--i" as string]: 3 }}>
             <ContactButton location="hero">Solicitar una entrevista</ContactButton>
             <Link href="/#enfoque" className="btn btn-outline">
               Conocer mi enfoque
@@ -33,7 +34,7 @@ export function Hero() {
           </div>
 
           {/* Firma */}
-          <div className="mt-12 flex items-center gap-4">
+          <div className="build mt-12 flex items-center gap-4" style={{ ["--i" as string]: 4 }}>
             {site.photos.profile && (
               <Image
                 src={site.photos.profile}
@@ -53,8 +54,14 @@ export function Hero() {
           </div>
         </div>
 
-        <figure className="relative mx-auto w-full max-w-[19rem] sm:max-w-[22rem] lg:max-w-[25rem]">
-          <HeroTree className="h-auto w-full" />
+        <figure className="relative mx-auto w-full max-w-[22rem] sm:max-w-[26rem] lg:max-w-[30rem]">
+          <p className="hero-phrase-top text-center font-display text-[1.35rem] italic">{phrase.top}</p>
+          <BrandTree
+            animate="hero"
+            className="my-2 h-auto w-full"
+            title="Árbol con sus raíces: lo florido arriba de la tierra, lo sepultado debajo."
+          />
+          <p className="hero-phrase-bottom text-center font-display text-[1.35rem] italic text-sage-deep">{phrase.bottom}</p>
         </figure>
       </div>
     </section>
@@ -106,10 +113,11 @@ function Portrait() {
             alt={`${site.person.displayName}, psicólogo, en su consultorio`}
             fill
             sizes="(min-width: 1024px) 38vw, 100vw"
-            className="object-cover"
+            className="object-cover object-top"
           />
         </div>
-        <figcaption className="mt-3 text-sm text-ink-soft">{site.person.displayName} en su consultorio de barrio Juniors.</figcaption>
+        <figcaption className="mt-3 text-sm text-ink-soft">{site.person.displayName} en su consultorio de barrio Juniors, Córdoba.</figcaption>
+        <RootsMotif className="mx-auto -mt-1 hidden h-auto w-3/4 opacity-70 lg:block" />
       </figure>
     );
   }
@@ -387,42 +395,31 @@ export function Presencial() {
           </ul>
           <div className="mt-9 flex flex-col gap-3 sm:flex-row">
             <ContactButton intent="presencial" location="presencial">Solicitar turno presencial</ContactButton>
-            <a href={location.mapsSearchUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
-              <MapPin aria-hidden className="size-4" /> Ver en Google Maps
-              <span className="sr-only"> (abre en una pestaña nueva)</span>
+            <a href={location.directionsUrl} target="_blank" rel="noopener noreferrer" className="btn btn-outline">
+              <MapPin aria-hidden className="size-4" /> Cómo llegar
+              <span className="sr-only"> (abre Google Maps en una pestaña nueva)</span>
             </a>
           </div>
         </div>
 
-        <div>
-          {location.mapEmbedUrl ? (
-            <iframe
-              src={location.mapEmbedUrl}
-              title={`Mapa: ${location.street}, ${location.neighborhood}, ${location.city}`}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              className="aspect-[4/3] w-full rounded-[var(--radius-panel)] border-0"
-            />
-          ) : (
-            <div className="relative flex aspect-[4/3] items-center justify-center overflow-hidden rounded-[var(--radius-panel)] bg-beige">
-              {/* Plano abstracto: no representa coordenadas reales */}
-              <svg aria-hidden viewBox="0 0 400 300" className="absolute inset-0 size-full opacity-60">
-                <g stroke="#788f80" strokeWidth="1" fill="none">
-                  <path d="M0 80 C 120 70 260 100 400 60" />
-                  <path d="M0 190 C 140 210 250 170 400 200" />
-                  <path d="M120 0 C 130 110 100 200 140 300" />
-                  <path d="M280 0 C 260 120 300 200 270 300" />
-                  <path d="M0 250 C 80 240 160 260 220 300" />
-                </g>
-              </svg>
-              <div className="relative flex flex-col items-center gap-2 text-center">
-                <Isotipo className="size-16" />
-                <p className="font-display text-2xl font-semibold">{location.street}</p>
-                <p className="text-sm text-ink-soft">{location.neighborhood}, Córdoba Capital</p>
-              </div>
-            </div>
-          )}
-        </div>
+        <figure>
+          <iframe
+            src={location.mapEmbedUrl}
+            title={`Mapa: ${location.street}, ${location.neighborhood}, Córdoba`}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            allowFullScreen
+            className="aspect-[4/3] w-full rounded-[var(--radius-panel)] border-0 bg-beige"
+          />
+          <figcaption className="mt-3 flex flex-wrap items-center justify-between gap-3 text-sm text-ink-soft">
+            <span>
+              {location.street}, {location.neighborhood}. {location.reference}.
+            </span>
+            <a href={location.directionsUrl} target="_blank" rel="noopener noreferrer" className="link-static font-semibold text-charcoal">
+              Cómo llegar<span className="sr-only"> (abre Google Maps en una pestaña nueva)</span>
+            </a>
+          </figcaption>
+        </figure>
       </div>
     </section>
   );
@@ -518,7 +515,7 @@ export function Footer() {
         <div className="grid gap-10 border-b border-charcoal/10 pb-12 md:grid-cols-4">
           <div className="md:col-span-2">
             <div className="flex items-center gap-3">
-              <Isotipo className="size-12" />
+              <BrandTree className="h-12 w-16 shrink-0" />
               <div>
                 <p className="font-display text-xl font-semibold">{site.person.displayName}</p>
                 <p className="text-ink-soft">

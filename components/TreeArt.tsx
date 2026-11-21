@@ -1,7 +1,7 @@
 /**
  * EL ÁRBOL COMO SISTEMA GRÁFICO
  * Cada sección usa una parte del árbol:
- *   Hero → árbol completo (crece al cargar)   · Sobre mí → raíces
+ *   Hero / intro → árbol de marca (BrandTree.tsx) · Sobre mí → raíces
  *   Frase → suelo + raíces                    · Enfoque → ramificaciones
  *   Áreas → brotes                            · Cierre → floración
  * Todo es SVG en línea (sin imágenes ni librerías). `pathLength={1}` permite
@@ -16,106 +16,6 @@ const AQUA = "#b7ddd4";
 const BEIGE = "#f3eadf";
 
 const d = (delay: number, dur?: number) => ({ "--d": `${delay}s`, ...(dur ? { "--dur": `${dur}s` } : {}) }) as CSSProperties;
-
-/* ---------- Árbol del hero ---------- */
-const roots = {
-  main: [
-    "M210 300 C 209 350, 222 385, 204 420 C 190 448, 214 475, 205 520 C 202 540, 208 555, 206 575",
-    "M207 302 C 196 335, 160 345, 138 372 C 116 398, 126 428, 98 452 C 84 464, 66 468, 52 484",
-    "M213 302 C 226 338, 262 348, 282 378 C 302 406, 290 432, 318 454 C 334 466, 352 470, 368 488",
-    "M208 305 C 180 315, 140 312, 100 326 C 76 334, 58 330, 34 340",
-    "M212 305 C 244 316, 286 312, 322 328 C 346 338, 362 334, 386 344",
-  ],
-  fine: [
-    "M138 372 C 152 396, 138 418, 156 440 C 168 455, 156 474, 166 492",
-    "M282 378 C 266 402, 280 420, 262 444 C 252 458, 264 476, 256 494",
-    "M100 326 C 92 344, 76 352, 70 370",
-    "M322 328 C 332 346, 348 354, 352 372",
-    "M204 420 C 186 432, 176 452, 178 470",
-    "M98 452 C 96 470, 86 482, 88 500",
-    "M318 454 C 322 472, 334 482, 332 500",
-    "M206 520 C 222 530, 228 544, 236 556",
-  ],
-};
-const trunk = [
-  "M206 300 C 204 262, 210 232, 205 197 C 201 172, 207 160, 204 140",
-  "M214 300 C 216 264, 211 234, 216 202 C 219 180, 213 166, 215 150",
-];
-const branches = {
-  main: [
-    "M206 205 C 180 190, 150 185, 125 160 C 112 147, 108 130, 112 112",
-    "M214 190 C 240 176, 268 170, 292 146 C 306 132, 308 112, 300 96",
-    "M205 152 C 198 126, 214 106, 205 84",
-  ],
-  fine: [
-    "M150 182 C 140 166, 146 146, 134 130",
-    "M262 168 C 274 150, 268 133, 280 118",
-    "M207 122 C 228 110, 238 94, 242 78",
-    "M204 132 C 186 118, 176 100, 172 86",
-  ],
-};
-const buds: [number, number, number, string][] = [
-  [112, 106, 8, AQUA],
-  [134, 125, 5, BEIGE],
-  [300, 90, 9, AQUA],
-  [280, 113, 5, LINE],
-  [205, 77, 10, AQUA],
-  [242, 72, 6, BEIGE],
-  [172, 80, 6, LINE],
-  [125, 160, 3.5, LINE],
-  [292, 146, 3.5, AQUA],
-];
-
-export function HeroTree({ className = "" }: { className?: string }) {
-  return (
-    <svg
-      viewBox="0 0 420 660"
-      fill="none"
-      className={`tree-grow ${className}`}
-      role="img"
-      aria-label="Ilustración de un árbol con sus raíces. Arriba: «Lo que el árbol tiene de florido». Abajo: «vive de lo que tiene sepultado»."
-    >
-      {/* la frase enmarca el árbol: lo florido arriba, lo sepultado abajo */}
-      <text
-        x="210" y="30" textAnchor="middle" className="surface" style={{ ...d(3.3), fontFamily: "var(--font-display)", fontStyle: "italic" }}
-        fontSize="21" fill={INK}
-      >
-        Lo que el árbol tiene de florido
-      </text>
-      <g transform="translate(0 34)">
-        <path className="ground-line" d="M18 300 H 402" stroke={LINE} strokeWidth="1" />
-        <g stroke={ROOT} strokeLinecap="round">
-          {roots.main.map((p, i) => (
-            <path key={p} className="grow" pathLength={1} d={p} strokeWidth={1.7} style={d(0.3 + i * 0.12, 1.8)} />
-          ))}
-          {roots.fine.map((p, i) => (
-            <path key={p} className="grow" pathLength={1} d={p} strokeWidth={1.1} style={d(1.1 + i * 0.08, 1.2)} />
-          ))}
-        </g>
-        <g stroke={INK} strokeLinecap="round">
-          {trunk.map((p) => (
-            <path key={p} className="grow" pathLength={1} d={p} strokeWidth={2.2} style={d(1.7, 1)} />
-          ))}
-          {branches.main.map((p, i) => (
-            <path key={p} className="grow" pathLength={1} d={p} strokeWidth={1.6} style={d(2.3 + i * 0.12, 1)} />
-          ))}
-          {branches.fine.map((p, i) => (
-            <path key={p} className="grow" pathLength={1} d={p} strokeWidth={1.2} style={d(2.7 + i * 0.08, 0.8)} />
-          ))}
-        </g>
-        {buds.map(([cx, cy, r, fill], i) => (
-          <circle key={`${cx}-${cy}`} className="bud" cx={cx} cy={cy} r={r} fill={fill} stroke={INK} strokeWidth=".8" style={d(3 + i * 0.07)} />
-        ))}
-      </g>
-      <text
-        x="210" y="650" textAnchor="middle" className="surface" style={{ ...d(0.6), fontFamily: "var(--font-display)", fontStyle: "italic" }}
-        fontSize="21" fill={ROOT}
-      >
-        vive de lo que tiene sepultado
-      </text>
-    </svg>
-  );
-}
 
 /* ---------- Raíces (Sobre mí): cuelgan desde una línea de suelo ---------- */
 export function RootsMotif({ className = "" }: { className?: string }) {
@@ -211,24 +111,3 @@ export function Blossom({ className = "" }: { className?: string }) {
   );
 }
 
-/* ---------- Isotipo (versión en línea del archivo /public/brand/isotipo.svg) ---------- */
-export function Isotipo({ className = "", negative = false }: { className?: string; negative?: boolean }) {
-  const ink = negative ? "#faf9f5" : INK;
-  return (
-    <svg viewBox="0 0 64 64" className={className} aria-hidden fill="none">
-      <path d="M8 28 H 56" stroke={LINE} strokeWidth="1.2" strokeLinecap="round" />
-      <g stroke={ink} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
-        <path d="M32 28 C 32 22, 31 18, 32.5 11" />
-        <path d="M31.6 21 C 28 19.5, 24.5 17, 22 12" />
-        <path d="M32 16.5 C 35 15, 37.5 13, 39 9.5" />
-        <path d="M32 28 C 32.5 36, 30 42, 31 50 C 31.5 55, 30.5 58, 31 61" />
-        <path d="M31 29 C 27 32.5, 21 34, 15.5 38 C 12 40.5, 10 43, 6.5 44.5" />
-        <path d="M33 29 C 37 32, 43 33, 48 36.5 C 51.5 39, 53.5 41.5, 57.5 42" />
-        <path d="M30.5 31 C 27.5 37, 23 41, 21 48" />
-        <path d="M33.5 31.5 C 36.5 38, 40.5 43, 41 51" />
-      </g>
-      <circle cx="21.5" cy="10.5" r="2.7" fill={AQUA} stroke={ink} strokeWidth="1.2" />
-      <circle cx="32.6" cy="8.6" r="3.1" fill={AQUA} stroke={ink} strokeWidth="1.2" />
-    </svg>
-  );
-}

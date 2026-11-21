@@ -37,7 +37,7 @@ Decisión: **no** crear páginas por país ("psicólogo online en Madrid") mient
 4. **Servicios:** Psicoterapia para adultos · Psicoterapia online · Orientación y desarrollo profesional · Primera entrevista.
 5. **Atributos:** "Citas online", "Solo con cita previa".
 6. **Horario:** L–V 8:00–20:00 (igual que la web).
-7. **Dirección:** Posadas 331, Juniors, Córdoba. Verificar que el pin esté en la puerta correcta; luego copiar el "Insertar mapa" en `site.location.mapEmbedUrl`.
+7. **Dirección:** Posadas 331, Juniors, Córdoba. Verificar que el pin esté en la puerta correcta. La web ya incrusta un mapa por dirección; si se quiere mostrar exactamente la ficha de Google Business, reemplazar `site.location.mapEmbedUrl` por la URL de "Compartir → Insertar un mapa" del perfil.
 8. **Sitio web:** dominio definitivo. **Botón de chat/WhatsApp** con el mismo número.
 9. **Fotos reales:** fachada, sala de espera, consultorio (sin pacientes), retrato. Nada de stock.
 10. **Reseñas:** se pueden pedir, pero con cuidado ético: nunca como condición, sin incentivos, sin responder revelando que la persona es paciente (secreto profesional). Considerar no pedirlas activamente a pacientes en tratamiento; revisar el código de ética del Colegio.
@@ -58,3 +58,8 @@ Pendiente: unificar perfiles externos (la principal fuente de contradicción hoy
 
 ## Posibles próximos pasos de contenido
 - Publicar el blog (doc 04) en `/blog/[slug]` con `Article` + `BreadcrumbList`. Empezar por los artículos 9 (online), 1 (empezar terapia) y 4 (cuándo consultar).
+
+## Indexación en motores con IA (complemento GEO)
+- **Google Search Console:** enviar el sitemap (AI Overviews y Gemini usan el índice de Google).
+- **Bing Webmaster Tools:** verificar el sitio e importar desde Search Console (ChatGPT con búsqueda y Copilot usan el índice de Bing).
+- **Brave Search:** enviar la URL en search.brave.com/submit-url (Claude usa Brave cuando busca).

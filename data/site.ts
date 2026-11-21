@@ -44,8 +44,12 @@ export const site = {
     country: "AR",
     countryName: "Argentina",
     reference: "A unos 10 minutos del centro de Córdoba",
-    /** Pegar acá la URL de "Insertar mapa" de Google Maps cuando se confirme la ubicación exacta. */
-    mapEmbedUrl: null as string | null,
+    /** Mapa incrustado: búsqueda por dirección (no usa coordenadas inventadas).
+     *  Si se prefiere el pin exacto de Google Business, reemplazar por la URL de "Compartir → Insertar un mapa". */
+    mapEmbedUrl:
+      "https://www.google.com/maps?q=" + encodeURIComponent("Posadas 331, Juniors, Córdoba, Argentina") + "&z=16&output=embed",
+    directionsUrl:
+      "https://www.google.com/maps/dir/?api=1&destination=" + encodeURIComponent("Posadas 331, Juniors, Córdoba, Argentina"),
     /** Enlace de búsqueda (no inventa coordenadas: deja que Google Maps resuelva la dirección). */
     mapsSearchUrl:
       "https://www.google.com/maps/search/?api=1&query=" +
@@ -103,10 +107,10 @@ export const site = {
   photos: {
     /** Retrato principal (sección Sobre mí). Subir el archivo a /public/images/nicolas-espindola-retrato.jpg
      *  y cambiar este valor a "/images/nicolas-espindola-retrato.jpg". Encuadre ideal 4:5, mínimo 1200 px de ancho. */
-    portrait: null as string | null,
+    portrait: "/images/nicolas-espindola-retrato.webp" as string | null,
     office: null as string | null,
-    /** Foto de perfil pequeña. La actual es provisoria (baja resolución). */
-    profile: "/images/nicolas-perfil-temporal.webp" as string | null,
+    /** Foto de perfil (recorte cuadrado del retrato). */
+    profile: "/images/nicolas-espindola-perfil.webp" as string | null,
   },
 } as const;
 
