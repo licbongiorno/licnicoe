@@ -104,6 +104,14 @@ export const site = {
     linkedin: null as string | null,
   },
 
+  /** Crédito de diseño y desarrollo web (igual que en las otras webs del estudio). */
+  designer: {
+    name: "Lic. Nicolás Bongiorno",
+    whatsapp: "5493516575261",
+    whatsappLabel: "351 657-5261",
+    message: "Hola Nicolás, vi la web del Lic. Nicolás Espíndola y me gustaría una página web para mi proyecto.",
+  },
+
   photos: {
     /** Retrato principal (sección Sobre mí). Subir el archivo a /public/images/nicolas-espindola-retrato.jpg
      *  y cambiar este valor a "/images/nicolas-espindola-retrato.jpg". Encuadre ideal 4:5, mínimo 1200 px de ancho. */

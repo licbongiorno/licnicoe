@@ -75,3 +75,8 @@ VISITA (hero: quién, qué, cómo contactar) → CONFIANZA (firma con matrícula
 ### Pruebas (tercera iteración)
 - Build OK (12 rutas). Lighthouse móvil con la introducción activa: inicio **94–98 / 100 / 100 / 100**, terapia online **97 / 100 / 100 / 100**. El LCP es el título del hero (2,4–3,1 s en la simulación), porque el título se pinta debajo de la introducción. CLS 0.
 - Playwright: la introducción completa la secuencia y se oculta, no se repite en la misma sesión y se puede saltar; con movimiento reducido no aparece y el árbol queda completo; sin JS la página es usable (13 enlaces de WhatsApp). Menú, sección activa, FAQ y teclado OK. Rutas (sprite, `llms.txt`, íconos, `/marca`) devuelven 200. JSON-LD válido.
+
+## 8. Cuarta iteración
+- **Raíces unificadas:** las raíces de «Sobre mí» y de la sección de la frase ahora son las mismas del árbol del logo (`BrandRoots`, desde el sprite), en lugar de trazos dibujados a línea. En la frase, las raíces bajan desde la línea de suelo al entrar en pantalla, y «vive de lo que tiene sepultado» queda debajo de ellas.
+- **Crédito de diseño:** píldora «Diseño y desarrollo web · Lic. Nicolás Bongiorno» en el pie, con el mismo estilo que las demás webs del estudio, que abre WhatsApp al 351 657-5261 con un mensaje precargado. También `<meta name="designer">`, `creator` en los metadatos y en `WebSite` (JSON-LD). Los clics se miden como `designer_credit_click`.
+- **Pruebas:** Lighthouse móvil 93 / 100 / 100 / 100; responsive de 360 a 1920 px sin desborde; intro, menú, FAQ, movimiento reducido, sin JS y rutas OK.

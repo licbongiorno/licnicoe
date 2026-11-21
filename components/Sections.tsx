@@ -4,8 +4,9 @@ import { Clock, Globe2, Headphones, MapPin, ShieldCheck, Video, Wifi, Plus } fro
 import { site } from "@/data/site";
 import { hero, about, approach, phrase, areas, online, presencial, coverage, faq, closing } from "@/data/content";
 import { ContactButton } from "./ContactButton";
-import { RootsMotif, BranchGlyph, Sprout, Blossom } from "./TreeArt";
-import { BrandTree } from "./BrandTree";
+import { DesignerCredit } from "./DesignerCredit";
+import { BranchGlyph, Sprout, Blossom } from "./TreeArt";
+import { BrandTree, BrandRoots } from "./BrandTree";
 
 /* =========================================================
    HERO — el árbol completo
@@ -117,13 +118,13 @@ function Portrait() {
           />
         </div>
         <figcaption className="mt-3 text-sm text-ink-soft">{site.person.displayName} en su consultorio de barrio Juniors, Córdoba.</figcaption>
-        <RootsMotif className="mx-auto -mt-1 hidden h-auto w-3/4 opacity-70 lg:block" />
+        <BrandRoots className="mx-auto mt-6 hidden h-auto w-full lg:block" />
       </figure>
     );
   }
   return (
     <div aria-hidden className="relative">
-      <RootsMotif className="mx-auto h-auto w-full max-w-[16rem] sm:max-w-sm lg:max-w-md" />
+      <BrandRoots className="mx-auto h-auto w-full max-w-md" />
     </div>
   );
 }
@@ -148,32 +149,17 @@ export function Phrase() {
             </span>
           ))}
         </p>
-        <div className="ground-draw ground my-6 md:my-8" />
-        <p className="display text-center text-[length:var(--text-step-4)] italic text-sage-deep">
+        {/* el suelo y, debajo, las mismas raíces del logo; lo «sepultado» queda bajo tierra */}
+        <div className="ground-draw ground mt-6 md:mt-8" />
+        <BrandRoots animate className="mx-auto -mt-px h-auto w-full max-w-3xl" ground="transparent" />
+        <p className="display mt-2 text-center text-[length:var(--text-step-4)] italic text-sage-deep">
           {groupsBottom.map((g, i) => (
-            <span key={g} className="fall inline-block" style={{ ["--d" as string]: `${1.7 + i * 0.35}s` }}>
+            <span key={g} className="fall inline-block" style={{ ["--d" as string]: `${2.3 + i * 0.35}s` }}>
               {g}
               {i === 0 ? " " : ""}
             </span>
           ))}
         </p>
-        <svg viewBox="0 0 600 120" fill="none" className="mx-auto mt-4 h-auto w-full max-w-2xl">
-          <g stroke="#4f6457" strokeLinecap="round" strokeWidth="1.2">
-            {[
-              "M300 0 C 299 40, 310 70, 297 120",
-              "M299 2 C 292 34, 262 48, 236 66 C 210 84, 214 104, 192 118",
-              "M301 2 C 308 34, 338 48, 364 66 C 390 84, 386 104, 408 118",
-              "M298 4 C 270 14, 220 18, 176 30 C 140 40, 118 38, 90 50",
-              "M302 4 C 330 14, 380 18, 424 30 C 460 40, 482 38, 510 50",
-              "M236 66 C 230 84, 238 98, 232 114",
-              "M364 66 C 370 84, 362 98, 368 114",
-              "M176 30 C 168 46, 156 54, 150 70",
-              "M424 30 C 432 46, 444 54, 450 70",
-            ].map((p, i) => (
-              <path key={p} className="grow" pathLength={1} d={p} strokeWidth={i < 5 ? 1.3 : 0.9} style={{ ["--d" as string]: `${2.4 + i * 0.1}s` }} />
-            ))}
-          </g>
-        </svg>
       </div>
       <div className="container-x mt-10 grid gap-6 md:mt-14 md:grid-cols-2 md:gap-12">
         {phrase.reading.map((p) => (
@@ -510,7 +496,7 @@ export function Footer() {
   const year = new Date().getFullYear();
   const { links } = site;
   return (
-    <footer className="bg-paper pt-16 pb-10 text-sm">
+    <footer className="bg-paper pt-16 pb-28 text-sm md:pb-10">
       <div className="container-x">
         <div className="grid gap-10 border-b border-charcoal/10 pb-12 md:grid-cols-4">
           <div className="md:col-span-2">
@@ -568,6 +554,9 @@ export function Footer() {
           <p>© {year} {site.person.displayName}. Todos los derechos reservados.</p>
           <Link href="/privacidad" className="link-static">Política de privacidad</Link>
         </div>
+
+        {/* Crédito de diseño y desarrollo web */}
+        <DesignerCredit />
       </div>
     </footer>
   );

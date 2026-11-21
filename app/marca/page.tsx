@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
-import { RootsMotif, BranchGlyph, Sprout } from "@/components/TreeArt";
-import { BrandTree } from "@/components/BrandTree";
+import { BranchGlyph, Sprout } from "@/components/TreeArt";
+import { BrandTree, BrandRoots } from "@/components/BrandTree";
 
 export const metadata: Metadata = {
   title: "Manual de identidad",
@@ -166,8 +166,8 @@ export default function Page() {
               <figcaption className="mt-3 text-sm text-ink-soft">Introducción e inicio: el árbol de marca se arma (suelo, raíces, copa, hojas).</figcaption>
             </figure>
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
-              <RootsMotif className="mx-auto h-48 w-auto" />
-              <figcaption className="mt-3 text-sm text-ink-soft">Sobre mí: las raíces, la historia.</figcaption>
+              <div className="flex h-48 items-center"><BrandRoots className="h-auto w-full" /></div>
+              <figcaption className="mt-3 text-sm text-ink-soft">Sobre mí y la frase: las raíces del mismo árbol, la historia.</figcaption>
             </figure>
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
               <div className="flex h-48 items-end justify-center gap-2">
