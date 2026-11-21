@@ -5,8 +5,7 @@ import { site } from "@/data/site";
 import { hero, about, approach, phrase, areas, online, presencial, coverage, faq, closing } from "@/data/content";
 import { ContactButton } from "./ContactButton";
 import { DesignerCredit } from "./DesignerCredit";
-import { BranchGlyph, Sprout, Blossom } from "./TreeArt";
-import { BrandTree, BrandRoots } from "./BrandTree";
+import { BrandTree, BrandRoots, TreeStage, LogoLeaf } from "./BrandTree";
 
 /* =========================================================
    HERO — el árbol completo
@@ -193,11 +192,11 @@ export function Approach() {
           ))}
         </div>
 
-        {/* Los cuatro pilares como un proceso que se ramifica desde el mismo suelo */}
-        <ol className="mt-20 grid grid-cols-1 border-b border-sage sm:grid-cols-2 lg:grid-cols-4">
+        {/* Los cuatro pilares: el mismo árbol del logo en cuatro etapas de crecimiento */}
+        <ol className="mt-20 grid grid-cols-1 gap-y-4 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4">
           {approach.pillars.map((p, i) => (
-            <li key={p.n} className="flex gap-5 pb-8 pt-2 sm:flex-col sm:gap-3 sm:pr-6">
-              <BranchGlyph stage={i as 0 | 1 | 2 | 3} className="h-24 w-20 shrink-0 sm:order-last sm:mt-auto sm:h-28 sm:w-24" />
+            <li key={p.n} className="flex items-center gap-5 sm:flex-col sm:items-stretch sm:gap-5">
+              <TreeStage stage={i as 0 | 1 | 2 | 3} className="h-auto w-28 shrink-0 sm:order-first sm:w-full sm:max-w-[13rem]" />
               <div>
                 <p className="font-display text-lg text-sage-deep">{p.n}</p>
                 <h3 className="font-display text-[2rem] font-semibold leading-none">{p.title}</h3>
@@ -230,7 +229,9 @@ export function Areas() {
         <ul className="mt-14 grid gap-x-14 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
           {areas.items.map((a, i) => (
             <li key={a.title} className="group flex gap-4">
-              <Sprout n={i} className="h-10 w-8 shrink-0 transition-transform duration-300 group-hover:-translate-y-0.5" />
+              <span className="flex size-11 shrink-0 items-center justify-center rounded-full bg-beige transition-transform duration-300 group-hover:-translate-y-0.5">
+                <LogoLeaf n={i} className="size-6" />
+              </span>
               <div>
                 <h3 className="font-display text-[1.55rem] font-semibold leading-tight">{a.title}</h3>
                 <p className="mt-2 text-ink-soft">{a.text}</p>
@@ -467,8 +468,8 @@ export function Faq() {
    ========================================================= */
 export function Closing() {
   return (
-    <section id="contacto" aria-labelledby="closing-title" className="relative overflow-hidden bg-charcoal pt-10 pb-24 text-paper md:pb-32">
-      <Blossom className="reveal-target mx-auto h-auto w-full max-w-3xl" />
+    <section id="contacto" aria-labelledby="closing-title" className="relative overflow-hidden bg-charcoal pt-16 pb-24 text-paper md:pb-32">
+      <BrandTree color="#b7ddd4" ground="#788f80" className="mx-auto h-auto w-44 md:w-52" />
       <div className="container-x relative mt-8 max-w-3xl text-center">
         <p className="text-sm font-semibold text-aqua">{site.brand.triad}</p>
         <h2 id="closing-title" className="display mt-5 text-[length:var(--text-step-3)]">

@@ -80,3 +80,10 @@ VISITA (hero: quién, qué, cómo contactar) → CONFIANZA (firma con matrícula
 - **Raíces unificadas:** las raíces de «Sobre mí» y de la sección de la frase ahora son las mismas del árbol del logo (`BrandRoots`, desde el sprite), en lugar de trazos dibujados a línea. En la frase, las raíces bajan desde la línea de suelo al entrar en pantalla, y «vive de lo que tiene sepultado» queda debajo de ellas.
 - **Crédito de diseño:** píldora «Diseño y desarrollo web · Lic. Nicolás Bongiorno» en el pie, con el mismo estilo que las demás webs del estudio, que abre WhatsApp al 351 657-5261 con un mensaje precargado. También `<meta name="designer">`, `creator` en los metadatos y en `WebSite` (JSON-LD). Los clics se miden como `designer_credit_click`.
 - **Pruebas:** Lighthouse móvil 93 / 100 / 100 / 100; responsive de 360 a 1920 px sin desborde; intro, menú, FAQ, movimiento reducido, sin JS y rutas OK.
+
+## 9. Quinta iteración: un solo árbol en toda la web
+- Se eliminaron todos los dibujos hechos a línea (ramitas de los pilares, brotes de las áreas, círculos de la floración y raíces dibujadas), porque no coincidían con el logo.
+- **Pilares:** el mismo árbol del logo en 4 etapas de crecimiento (`TreeStage`).
+- **Áreas:** 7 hojas reales del árbol, elegidas entre las más limpias del calcado (`LogoLeaf`, generadas desde `scripts/tree_to_ts.py`).
+- **Cierre:** el árbol del logo en verde agua.
+- Lighthouse móvil: 96 / 100 / 100 / 100; responsive y pruebas de interacción OK.
