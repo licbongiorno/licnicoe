@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
-import { BranchGlyph, Sprout } from "@/components/TreeArt";
-import { BrandTree, BrandRoots } from "@/components/BrandTree";
+import { BrandTree, BrandRoots, TreeStage, LogoLeaf } from "@/components/BrandTree";
 
 export const metadata: Metadata = {
   title: "Manual de identidad",
@@ -171,15 +170,15 @@ export default function Page() {
             </figure>
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
               <div className="flex h-48 items-end justify-center gap-2">
-                {[0, 1, 2, 3].map((i) => <BranchGlyph key={i} stage={i as 0 | 1 | 2 | 3} className="h-28 w-16" />)}
+                {[0, 1, 2, 3].map((i) => <TreeStage key={i} stage={i as 0 | 1 | 2 | 3} className="h-auto w-1/4" />)}
               </div>
-              <figcaption className="mt-3 text-sm text-ink-soft">Enfoque: ramificaciones que crecen de un mismo suelo.</figcaption>
+              <figcaption className="mt-3 text-sm text-ink-soft">Enfoque: el mismo árbol en cuatro etapas (raíces, tronco, ramas, copa).</figcaption>
             </figure>
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
               <div className="flex h-48 items-center justify-center gap-3">
-                {[0, 1, 2, 3, 4, 5, 6].map((i) => <Sprout key={i} n={i} className="h-10 w-8" />)}
+                {[0, 1, 2, 3, 4, 5, 6].map((i) => <LogoLeaf key={i} n={i} className="size-7" />)}
               </div>
-              <figcaption className="mt-3 text-sm text-ink-soft">Áreas: siete brotes distintos. Cierre: floración.</figcaption>
+              <figcaption className="mt-3 text-sm text-ink-soft">Áreas: siete hojas reales del árbol. Cierre: floración.</figcaption>
             </figure>
           </div>
         </section>

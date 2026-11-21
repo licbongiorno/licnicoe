@@ -57,11 +57,11 @@ Espaciado: escala de Tailwind (múltiplos de 4 px); secciones `py-20` (móvil) /
 | Sección | Parte del árbol | Componente |
 |---|---|---|
 | Introducción + inicio | Árbol de marca que se arma + la frase (florido arriba, sepultado abajo) | `BrandTree` (`components/BrandTree.tsx`) |
-| Sobre mí | Raíces que cuelgan de la línea de suelo | `RootsMotif` |
-| La frase | Suelo + raíces bajo el texto | sección `Phrase` |
-| Enfoque | 4 ramificaciones que crecen del mismo suelo, cada vez más ramificadas | `BranchGlyph` |
-| Áreas | 7 brotes distintos | `Sprout` |
-| Cierre | Floración | `Blossom` |
+| Sobre mí | Las raíces del logo | `BrandRoots` |
+| La frase | Suelo + raíces del logo que bajan | `BrandRoots` (animado) |
+| Enfoque | El árbol del logo en 4 etapas: raíces → tronco → ramas con primeras hojas → copa completa | `TreeStage` |
+| Áreas | 7 hojas reales del árbol del logo | `LogoLeaf` |
+| Cierre | El árbol del logo en verde agua sobre fondo oscuro | `BrandTree` |
 | Favicon / header / footer | Árbol de marca estático | `BrandTree` |
 
 ## Movimiento
