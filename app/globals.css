@@ -247,3 +247,58 @@
   .tree-grow .ground-line, .phrase .ground-draw { animation: none; transform: none; }
   .faq details::details-content { transition: none; }
 }
+
+/* =========================================================
+   INTRODUCCIÓN Y ARMADO DEL ÁRBOL DE MARCA
+   ========================================================= */
+@keyframes reveal-down { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes reveal-up { from { transform: scaleY(0); } to { transform: scaleY(1); } }
+@keyframes leaf { from { opacity: 0; transform: scale(0.6); } to { opacity: 1; transform: none; } }
+@keyframes fade-out { to { opacity: 0; visibility: hidden; } }
+@keyframes build { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+@keyframes build-soft { from { transform: translateY(14px); } to { transform: none; } }
+
+/* Momento de inicio: con intro, el hero se arma después de ella */
+:root { --t0: 2.75s; }
+.intro-done { --t0: 0.15s; }
+.bt-intro { --t0: 0.1s; }
+
+.bt-anim .bt-ground { transform-box: fill-box; transform-origin: center; animation: spread 0.7s var(--ease-organic) both; animation-delay: var(--t0); }
+.bt-anim .bt-roots-clip { transform-box: fill-box; transform-origin: top; animation: reveal-down 1.1s var(--ease-organic) both; animation-delay: calc(var(--t0) + 0.35s); }
+.bt-anim .bt-crown-clip { transform-box: fill-box; transform-origin: bottom; animation: reveal-up 1.1s var(--ease-organic) both; animation-delay: calc(var(--t0) + 0.85s); }
+.bt-anim .bt-ring { transform-box: fill-box; transform-origin: center; animation: leaf 0.7s var(--ease-organic) both; animation-delay: calc(var(--t0) + 1.45s + var(--r) * 0.16s); }
+
+.intro {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  background: var(--color-paper);
+  cursor: pointer;
+  animation: fade-out 0.6s var(--ease-organic) 2.65s forwards;
+}
+.intro-name { animation: build 0.8s var(--ease-organic) 1.75s both; }
+.intro-role { animation: build 0.8s var(--ease-organic) 1.95s both; }
+.intro-skip {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 101;
+  background: var(--color-paper);
+  animation: fade-out 0.4s var(--ease-organic) 2.65s forwards;
+}
+.intro-done .intro, .intro-done .intro-skip { display: none; }
+
+/* Armado de la web: el hero entra en secuencia cuando se retira la intro */
+/* solo desplazamiento (sin transparencia): el texto mantiene su contraste en todo momento */
+.build { animation: build-soft 0.9s var(--ease-organic) both; animation-delay: calc(var(--t0) + var(--i, 0) * 0.12s); }
+.build-soft { animation: build-soft 0.9s var(--ease-organic) both; animation-delay: var(--t0); } /* el título no se oculta (LCP) */
+.hero-phrase-top { animation: build 0.9s var(--ease-organic) both; animation-delay: calc(var(--t0) + 2s); }
+.hero-phrase-bottom { animation: build 0.9s var(--ease-organic) both; animation-delay: calc(var(--t0) + 0.6s); }
+
+@media (prefers-reduced-motion: reduce) {
+  .intro, .intro-skip { display: none; }
+  .bt-anim .bt-ground, .bt-anim .bt-roots-clip, .bt-anim .bt-crown-clip, .bt-anim .bt-ring,
+  .build, .build-soft, .hero-phrase-top, .hero-phrase-bottom { animation: none; opacity: 1; transform: none; }
+}

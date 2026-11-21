@@ -9,6 +9,8 @@ import { RevealObserver } from "@/components/Reveal";
 import { Analytics } from "@/components/Analytics";
 import { JsonLd } from "@/components/JsonLd";
 import { baseGraph } from "@/lib/schema";
+import { Intro } from "@/components/Intro";
+import { introHeadScript } from "@/lib/intro";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -48,7 +50,11 @@ export const viewport: Viewport = { themeColor: "#faf9f5", width: "device-width"
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es-AR" className={`${cormorant.variable} ${manrope.variable}`}>
+    <html lang="es-AR" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
+      <head>
+        <script dangerouslySetInnerHTML={{ __html: introHeadScript }} />
+        <link rel="preload" href="/brand/tree-sprite.svg" as="image" type="image/svg+xml" />
+      </head>
       <body>
         <noscript>
           <style>{`.phrase .rise,.phrase .fall,.blossom .bud{opacity:1}.phrase .grow{stroke-dashoffset:0}.phrase .ground-draw{transform:none}`}</style>
@@ -56,6 +62,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-paper">
           Saltar al contenido
         </a>
+        <Intro />
         <JsonLd data={baseGraph()} />
         <Header />
         <main id="contenido">{children}</main>

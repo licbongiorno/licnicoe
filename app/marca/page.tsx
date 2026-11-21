@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
-import { HeroTree, RootsMotif, BranchGlyph, Sprout, Isotipo } from "@/components/TreeArt";
+import { RootsMotif, BranchGlyph, Sprout } from "@/components/TreeArt";
+import { BrandTree } from "@/components/BrandTree";
 
 export const metadata: Metadata = {
   title: "Manual de identidad",
@@ -21,10 +22,16 @@ const palette = [
 
 const concepts = [
   {
+    file: "/brand/isotipo.svg",
+    title: "Definitivo · El árbol del cliente",
+    text: "Árbol con hojas sobre la línea de suelo y raíces que se abren debajo, provisto por el cliente y vectorizado para web. Lo florido y lo sepultado en una sola imagen.",
+    verdict: "Isotipo oficial. Se combina con el logotipo de la ruta C.",
+  },
+  {
     file: "/brand/concepto-a-arbol-subterraneo.svg",
     title: "A · El árbol subterráneo",
     text: "La copa es breve y las raíces se abren más ancho y más hondo. Traduce la frase de forma directa y sigue siendo legible a 16 px.",
-    verdict: "Elegido como isotipo.",
+    verdict: "Exploración previa (reemplazada por el árbol del cliente).",
   },
   {
     file: "/brand/concepto-b-anillos.svg",
@@ -51,8 +58,8 @@ export default function Page() {
       />
       <div className="container-x space-y-24 pb-28">
         <section aria-labelledby="c-title">
-          <h2 id="c-title" className="h2">Tres rutas</h2>
-          <div className="mt-10 grid gap-6 md:grid-cols-3">
+          <h2 id="c-title" className="h2">Rutas y versión definitiva</h2>
+          <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             {concepts.map((c) => (
               <figure key={c.file} className="rounded-[var(--radius-panel)] border border-charcoal/10 p-6">
                 <div className="flex h-40 items-center justify-center">
@@ -96,7 +103,7 @@ export default function Page() {
               <div className="mt-4 flex items-end gap-4">
                 <Image src="/brand/favicon.svg" alt="" width={16} height={16} unoptimized />
                 <Image src="/brand/favicon.svg" alt="" width={32} height={32} unoptimized />
-                <Isotipo className="size-12" />
+                <BrandTree className="h-12 w-16" />
               </div>
             </div>
             <div>
@@ -155,8 +162,8 @@ export default function Page() {
           <h2 id="s-title" className="h2">El árbol en cada sección</h2>
           <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
-              <HeroTree className="mx-auto h-48 w-auto" />
-              <figcaption className="mt-3 text-sm text-ink-soft">Inicio: el árbol completo, que crece una vez al cargar.</figcaption>
+              <BrandTree animate="hero" className="mx-auto h-48 w-auto" />
+              <figcaption className="mt-3 text-sm text-ink-soft">Introducción e inicio: el árbol de marca se arma (suelo, raíces, copa, hojas).</figcaption>
             </figure>
             <figure className="rounded-[var(--radius-panel)] bg-beige p-6">
               <RootsMotif className="mx-auto h-48 w-auto" />

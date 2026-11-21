@@ -9,7 +9,7 @@ INK, PAPER, AQUA, SAGE, SAGE_DEEP, BEIGE = "#272b29", "#faf9f5", "#b7ddd4", "#78
 # ---------- Isotipo definitivo (Concepto A: el árbol subterráneo) ----------
 # Grilla 64. Línea de suelo en y=30. Arriba: tronco breve, dos ramas, tres brotes.
 # Abajo: raíces más extensas que la copa (lo sepultado sostiene lo florido).
-def isotipo(stroke=INK, bud=AQUA, ground=SAGE, sw=2.2, simple=False):
+def isotipo_a(stroke=INK, bud=AQUA, ground=SAGE, sw=2.2, simple=False):
     # Asimétrico a propósito: la copa es breve y las raíces se abren más ancho y más hondo.
     crown = ('<path d="M32 28 C 32 22, 31 18, 32.5 11"/>'
              '<path d="M31.6 21 C 28 19.5, 24.5 17, 22 12"/>'
@@ -29,6 +29,16 @@ def isotipo(stroke=INK, bud=AQUA, ground=SAGE, sw=2.2, simple=False):
         buds += f'<circle cx="36.6" cy="13.9" r="1.7" fill="{bud}" stroke="{stroke}" stroke-width="{bsw}"/>'
     return (f'<path d="M8 28 H 56" stroke="{ground}" stroke-width="{sw*0.55:.2f}" stroke-linecap="round"/>'
             f'<g fill="none" stroke="{stroke}" stroke-width="{sw}" stroke-linecap="round" stroke-linejoin="round">{crown}{roots}</g>{buds}')
+
+TREE = json.load(open(os.path.join(os.path.dirname(__file__), "tree.json")))
+TREE_INK = "#2c3f37"
+
+def isotipo(stroke=TREE_INK, bud=None, ground=SAGE, sw=None, simple=False):
+    """Isotipo definitivo: árbol del cliente vectorizado, centrado en una grilla de 64."""
+    paths = "".join(f'<path d="{sh["d"]}" fill-rule="evenodd"/>' for sh in TREE["shapes"])
+    return (f'<g transform="translate(32 33.5) scale(0.5) translate(-142.5 -72)">'
+            f'<path d="M86 92.6 H 199" stroke="{ground}" stroke-width="1.1" stroke-linecap="round"/>'
+            f'<g fill="{stroke}">{paths}</g></g>')
 
 def svg(vb, body, w=None, h=None, title="Lic. Nicolás Espíndola"):
     size = f' width="{w}" height="{h}"' if w else ""
@@ -56,7 +66,7 @@ NAME_W = W["name"]["width"]  # ≈7102
 def horizontal(ink=INK, root=SAGE_DEEP, bud=AQUA, ground=SAGE, roleink=SAGE_DEEP):
     # isotipo 64 -> altura 120; texto escalado a 0.075 (cap ≈ 49px)
     s = 0.068
-    body = (f'<g transform="translate(0 0) scale(1.875)">{isotipo(ink, bud, ground)}</g>'
+    body = (f'<g transform="translate(0 0) scale(1.875)">{isotipo(ink if ink != INK else TREE_INK, ground=ground)}</g>'
             + wordmark(ink, root, x=140, y=62, scale=s)
             + role(roleink, x=142, y=104, scale=0.026)
             + f'<g fill="{roleink}" transform="translate({142 + W["role"]["width"]*0.026 + 14} 104) scale(0.026)"></g>')
@@ -64,16 +74,16 @@ def horizontal(ink=INK, root=SAGE_DEEP, bud=AQUA, ground=SAGE, roleink=SAGE_DEEP
 
 def vertical(ink=INK, root=SAGE_DEEP, bud=AQUA, ground=SAGE, roleink=SAGE_DEEP):
     s = 0.06; tw = NAME_W * s; W_ = int(tw) + 20
-    body = (f'<g transform="translate({W_/2 - 64} 0) scale(2)">{isotipo(ink, bud, ground)}</g>'
+    body = (f'<g transform="translate({W_/2 - 64} 0) scale(2)">{isotipo(ink if ink != INK else TREE_INK, ground=ground)}</g>'
             + wordmark(ink, root, x=10, y=190, scale=s)
             + role(roleink, x=(W_ - W["role"]["width"]*0.024)/2, y=262, scale=0.024))
     return svg(f"0 0 {W_} 272", body)
 
 save("isotipo.svg", svg("0 0 64 64", isotipo()))
-save("isotipo-mono.svg", svg("0 0 64 64", isotipo(INK, PAPER, INK)))
-save("isotipo-negativo.svg", svg("0 0 64 64", f'<rect width="64" height="64" fill="{INK}"/>' + isotipo(PAPER, AQUA, SAGE)))
-save("favicon.svg", svg("0 0 64 64", f'<rect width="64" height="64" rx="14" fill="{AQUA}"/>' + isotipo(INK, PAPER, INK, sw=3.4, simple=True)))
-save("avatar.svg", svg("0 0 400 400", f'<rect width="400" height="400" fill="{AQUA}"/><g transform="translate(72 64) scale(4)">{isotipo(INK, PAPER, SAGE_DEEP, sw=2)}</g>'))
+save("isotipo-mono.svg", svg("0 0 64 64", isotipo(INK, ground=INK)))
+save("isotipo-negativo.svg", svg("0 0 64 64", f'<rect width="64" height="64" fill="{INK}"/>' + isotipo(PAPER, ground=AQUA)))
+save("favicon.svg", svg("0 0 64 64", f'<rect width="64" height="64" rx="14" fill="{BEIGE}"/><g transform="translate(-3 -4) scale(1.1)">' + isotipo(TREE_INK, ground=SAGE_DEEP) + '</g>'))
+save("avatar.svg", svg("0 0 400 400", f'<rect width="400" height="400" fill="{BEIGE}"/><g transform="translate(40 40) scale(5)">{isotipo()}</g>'))
 save("logo-horizontal.svg", horizontal())
 save("logo-horizontal-negativo.svg", horizontal(PAPER, AQUA, AQUA, SAGE, AQUA))
 save("logo-horizontal-mono.svg", horizontal(INK, INK, PAPER, INK, INK))
@@ -84,7 +94,7 @@ save("logotipo.svg", svg(f"0 -720 {NAME_W} 1380", wordmark()))
 
 # ---------- Rutas exploratorias ----------
 # A: el árbol subterráneo (= isotipo definitivo)
-save("concepto-a-arbol-subterraneo.svg", svg("0 0 64 64", isotipo()))
+save("concepto-a-arbol-subterraneo.svg", svg("0 0 64 64", isotipo_a()))
 # B: anillos de crecimiento (corte del tronco = historia acumulada) atravesados por una ramificación
 ringsB = (f'<path d="M32 10c12 0 21 9 21 21.5S44 54 31.5 54 11 45 11 32 20 10 32 10Z" fill="{AQUA}"/>'
           f'<g fill="none" stroke="{INK}" stroke-width="1.6"><path d="M32 17c8.5 0 14.5 6.5 14.5 15s-6.5 15-15 15S17 40.5 17 32s6.5-15 15-15Z"/>'

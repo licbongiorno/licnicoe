@@ -13,6 +13,7 @@
 - Horario: lunes a viernes, de 8:00 a 20:00 (hora de Argentina, GMT-3).
 - Cobertura: pacientes particulares y obra social GEA (según autorización).
 - Atención internacional: online en español; sujeta a las condiciones regulatorias del país de residencia del paciente. Honorario de referencia USD 40 por sesión, a confirmar.
+- Cómo llegar: https://www.google.com/maps/dir/?api=1&destination=Posadas%20331%2C%20Juniors%2C%20C%C3%B3rdoba%2C%20Argentina
 - Contacto: WhatsApp desde el sitio web.
 - No es un servicio de emergencias.
 

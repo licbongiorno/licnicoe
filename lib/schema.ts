@@ -32,7 +32,16 @@ export function baseGraph() {
         knowsAbout: ["Psicoanálisis", "Psicoterapia", "Salud mental", "Orientación profesional"],
         worksFor: { "@id": serviceId },
         url: site.url,
-        ...(site.photos.profile ? { image: `${site.url}${site.photos.profile}` } : {}),
+        ...(site.photos.portrait
+          ? {
+              image: {
+                "@type": "ImageObject",
+                url: `${site.url}${site.photos.portrait}`,
+                caption: `${site.person.displayName}, psicólogo, en su consultorio de barrio Juniors, Córdoba`,
+              },
+            }
+          : {}),
+        workLocation: { "@id": serviceId },
         ...(sameAs.length ? { sameAs } : {}),
       },
       {
@@ -41,8 +50,12 @@ export function baseGraph() {
         name: `${site.person.displayName} · Psicólogo ${site.person.license}`,
         description: "Psicoterapia psicoanalítica e integrativa para adultos, presencial en Córdoba y online en español. Orientación y desarrollo profesional.",
         url: site.url,
-        logo: `${site.url}/brand/isotipo.svg`,
-        image: `${site.url}/opengraph-image`,
+        logo: `${site.url}/brand/favicon-512.png`,
+        image: [`${site.url}/opengraph-image`, ...(site.photos.portrait ? [`${site.url}${site.photos.portrait}`] : [])],
+        hasMap: site.location.mapsSearchUrl,
+        slogan: site.brand.tagline,
+        serviceType: ["Psicoterapia para adultos", "Psicoterapia online", "Orientación profesional"],
+        audience: { "@type": "PeopleAudience", audienceType: "Adultos" },
         knowsLanguage: site.person.languages,
         founder: { "@id": personId },
         employee: { "@id": personId },

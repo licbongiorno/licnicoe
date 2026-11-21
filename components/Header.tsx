@@ -7,7 +7,7 @@ import { Menu, X } from "lucide-react";
 import { nav } from "@/data/content";
 import { site } from "@/data/site";
 import { ContactButton } from "./ContactButton";
-import { Isotipo } from "./TreeArt";
+import { BrandTree } from "./BrandTree";
 
 export function Header() {
   const pathname = usePathname();
@@ -60,7 +60,7 @@ export function Header() {
     >
       <div className="container-x flex h-[4.5rem] items-center justify-between gap-6">
         <Link href="/#inicio" className="flex min-w-0 items-center gap-2.5">
-          <Isotipo className="size-10 shrink-0" />
+          <BrandTree className="h-10 w-[3.3rem] shrink-0" />
           <span className="min-w-0 leading-tight">
             <span className="block truncate font-display text-[1.3rem] font-semibold">{site.person.displayName}</span>
             <span className="block text-xs text-sage-deep">Psicólogo · {site.person.license}</span>

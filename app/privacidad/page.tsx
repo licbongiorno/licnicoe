@@ -41,7 +41,7 @@ export default function Page() {
 
         <h2>5. Servicios de terceros</h2>
         <p>
-          Al hacer clic en un botón de WhatsApp, la comunicación se realiza a través de WhatsApp (Meta), sujeta a sus propias políticas. El sitio puede usar una herramienta de analítica (por ejemplo, Google Analytics configurado sin señales publicitarias, o Plausible, sin cookies). El enlace a Google Maps abre un servicio de Google.
+          Al hacer clic en un botón de WhatsApp, la comunicación se realiza a través de WhatsApp (Meta), sujeta a sus propias políticas. El sitio puede usar una herramienta de analítica (por ejemplo, Google Analytics configurado sin señales publicitarias, o Plausible, sin cookies). La sección de atención presencial incluye un mapa de Google Maps que se carga cuando llegás a esa parte de la página; Google puede recibir datos técnicos de tu navegador según su propia política.
         </p>
 
         <h2>6. Tus derechos</h2>
