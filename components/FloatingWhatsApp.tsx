@@ -26,7 +26,7 @@ export function FloatingWhatsApp() {
       rel="noopener noreferrer"
       aria-label="Escribir por WhatsApp (abre en una nueva pestaña)"
       onClick={() => trackEvent("contact_click", { channel: "whatsapp", intent: "general", location: "floating" })}
-      className={`fixed bottom-5 right-5 z-40 flex size-14 items-center justify-center rounded-full bg-charcoal text-paper shadow-lg shadow-charcoal/20 transition-all duration-300 hover:bg-sage-deep ${
+      className={`fixed bottom-5 right-5 z-40 hidden size-14 lg:flex items-center justify-center rounded-full bg-charcoal text-paper shadow-lg shadow-charcoal/20 transition-all duration-300 hover:bg-sage-deep ${
         visible ? "translate-y-0 opacity-100" : "pointer-events-none translate-y-4 opacity-0"
       }`}
       tabIndex={visible ? 0 : -1}

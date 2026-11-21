@@ -9,10 +9,11 @@
  */
 import { useId } from "react";
 import { GROUND_Y, LEAF_ICONS } from "./treeData";
+import { asset } from "@/lib/asset";
 
 const VB = "62 10 166 124"; // recorte del lienzo original (277×146) alrededor del árbol
 
-const SPRITE = "/brand/tree-sprite.svg";
+const SPRITE = asset("/brand/tree-sprite.svg");
 const RINGS = [0, 1, 2, 3];
 
 type Props = {

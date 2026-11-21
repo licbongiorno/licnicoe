@@ -278,8 +278,8 @@
   cursor: pointer;
   animation: fade-out 0.6s var(--ease-organic) 2.65s forwards;
 }
-.intro-name { animation: build 0.8s var(--ease-organic) 1.75s both; }
-.intro-role { animation: build 0.8s var(--ease-organic) 1.95s both; }
+.intro-name { animation: build-soft 0.8s var(--ease-organic) 1.75s both; }
+.intro-role { animation: build-soft 0.8s var(--ease-organic) 1.95s both; }
 .intro-skip {
   position: fixed;
   right: 1rem;
@@ -333,3 +333,17 @@
 .nb-credit:hover .nb-credit__cta,.nb-credit:focus-visible .nb-credit__cta{max-width:260px;opacity:1;margin-left:4px}
 @media (hover:none){.nb-credit{flex-wrap:wrap;border-radius:20px;padding-right:14px}.nb-credit__cta{max-width:none;opacity:1;flex-basis:100%;padding:2px 0 2px 48px;white-space:normal}}
 @media (prefers-reduced-motion:reduce){.nb-credit,.nb-credit *{transition:none!important}}
+
+/* Preguntas frecuentes ya leídas (memoria local del navegador) */
+.faq details[data-read="true"] .faq-q::after {
+  content: "leída";
+  margin-left: 0.6rem;
+  padding: 0.1rem 0.5rem;
+  border-radius: 999px;
+  background: var(--color-aqua-soft);
+  color: var(--color-sage-deep);
+  font-family: var(--font-sans);
+  font-size: 0.72rem;
+  font-weight: 600;
+  vertical-align: middle;
+}

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import { PageIntro } from "@/components/PageIntro";
+import { asset } from "@/lib/asset";
 import { BrandTree, BrandRoots, TreeStage, LogoLeaf } from "@/components/BrandTree";
 
 export const metadata: Metadata = {
@@ -62,7 +63,7 @@ export default function Page() {
             {concepts.map((c) => (
               <figure key={c.file} className="rounded-[var(--radius-panel)] border border-charcoal/10 p-6">
                 <div className="flex h-40 items-center justify-center">
-                  <Image src={c.file} alt="" width={200} height={140} className="max-h-36 w-auto" unoptimized />
+                  <Image src={asset(c.file)} alt="" width={200} height={140} className="max-h-36 w-auto" unoptimized />
                 </div>
                 <figcaption className="mt-4">
                   <p className="font-display text-xl font-semibold">{c.title}</p>
@@ -86,7 +87,7 @@ export default function Page() {
               ["/brand/avatar.svg", "Avatar para redes", "bg-paper border border-charcoal/10"],
             ].map(([src, label, bg]) => (
               <figure key={src} className={`flex flex-col items-center justify-center gap-4 rounded-[var(--radius-panel)] p-10 ${bg}`}>
-                <Image src={src} alt="" width={420} height={160} className="h-28 w-auto" unoptimized />
+                <Image src={asset(src)} alt="" width={420} height={160} className="h-28 w-auto" unoptimized />
                 <figcaption className={`text-sm ${bg.includes("charcoal") ? "text-paper/70" : "text-ink-soft"}`}>{label}</figcaption>
               </figure>
             ))}
@@ -100,8 +101,8 @@ export default function Page() {
               <h3 className="font-display text-2xl font-semibold">Tamaños mínimos</h3>
               <p className="mt-2 text-ink-soft">Logotipo horizontal: 160 px de ancho (40 mm impreso). Isotipo: 24 px. Por debajo de 24 px, usar el favicon (versión simplificada).</p>
               <div className="mt-4 flex items-end gap-4">
-                <Image src="/brand/favicon.svg" alt="" width={16} height={16} unoptimized />
-                <Image src="/brand/favicon.svg" alt="" width={32} height={32} unoptimized />
+                <Image src={asset("/brand/favicon.svg")} alt="" width={16} height={16} unoptimized />
+                <Image src={asset("/brand/favicon.svg")} alt="" width={32} height={32} unoptimized />
                 <BrandTree className="h-12 w-16" />
               </div>
             </div>

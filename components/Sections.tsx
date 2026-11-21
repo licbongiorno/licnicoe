@@ -4,6 +4,9 @@ import { Clock, Globe2, Headphones, MapPin, ShieldCheck, Video, Wifi, Plus } fro
 import { site } from "@/data/site";
 import { hero, about, approach, phrase, areas, online, presencial, coverage, faq, closing } from "@/data/content";
 import { ContactButton } from "./ContactButton";
+import { TimezoneHelper } from "./TimezoneHelper";
+import { FaqMemory } from "./FaqMemory";
+import { asset } from "@/lib/asset";
 import { DesignerCredit } from "./DesignerCredit";
 import { BrandTree, BrandRoots, TreeStage, LogoLeaf } from "./BrandTree";
 
@@ -37,7 +40,7 @@ export function Hero() {
           <div className="build mt-12 flex items-center gap-4" style={{ ["--i" as string]: 4 }}>
             {site.photos.profile && (
               <Image
-                src={site.photos.profile}
+                src={asset(site.photos.profile)}
                 alt={`Retrato de ${site.person.displayName}`}
                 width={60}
                 height={60}
@@ -109,7 +112,7 @@ function Portrait() {
       <figure>
         <div className="relative aspect-[4/5] overflow-hidden rounded-[var(--radius-panel)] bg-aqua">
           <Image
-            src={src}
+            src={asset(src)}
             alt={`${site.person.displayName}, psicólogo, en su consultorio`}
             fill
             sizes="(min-width: 1024px) 38vw, 100vw"
@@ -328,6 +331,8 @@ export function Online({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
             </div>
           </div>
 
+          <div className="flex flex-col gap-6">
+          <TimezoneHelper />
           <div className="flex flex-col justify-between gap-8 rounded-[var(--radius-panel)] bg-paper p-8 md:p-10">
             <div>
               <h3 className="font-display text-[1.6rem] font-semibold">Qué necesitás</h3>
@@ -340,6 +345,7 @@ export function Online({ headingLevel = 2 }: { headingLevel?: 1 | 2 }) {
               </ul>
             </div>
             <ContactButton intent="online" location="online">Consultar por terapia online</ContactButton>
+          </div>
           </div>
         </div>
       </div>
@@ -449,14 +455,15 @@ export function Faq() {
         </div>
         <div className="faq border-t border-charcoal/15">
           {faq.map((f) => (
-            <details key={f.q} className="group border-b border-charcoal/15">
+            <details key={f.q} data-q={f.q} className="group border-b border-charcoal/15">
               <summary className="flex min-h-16 cursor-pointer list-none items-center justify-between gap-6 py-4 font-display text-[1.4rem] font-semibold leading-snug transition-colors hover:text-sage-deep [&::-webkit-details-marker]:hidden">
-                {f.q}
+                <span className="faq-q">{f.q}</span>
                 <Plus aria-hidden className="faq-icon size-5 shrink-0 text-sage-deep" strokeWidth={1.6} />
               </summary>
               <p className="max-w-[var(--measure)] pr-8 pb-6 text-ink-soft">{f.a}</p>
             </details>
           ))}
+          <FaqMemory />
         </div>
       </div>
     </section>
@@ -538,6 +545,7 @@ export function Footer() {
               {links.instagram && <li><a className="link-static" href={links.instagram} target="_blank" rel="noopener noreferrer">Instagram</a></li>}
               <li><Link className="link-static" href="/terapia-online-en-espanol">Terapia online en español</Link></li>
               <li><Link className="link-static" href="/orientacion-profesional">Orientación profesional</Link></li>
+              <li><Link className="link-static" href="/blog">Blog</Link></li>
             </ul>
           </div>
         </div>

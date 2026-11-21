@@ -73,4 +73,4 @@ Espaciado: escala de Tailwind (múltiplos de 4 px); secciones `py-20` (móvil) /
 5. **Accesibilidad**: con `prefers-reduced-motion` todo aparece sin animación; sin JavaScript también (`<noscript>`). Solo se animan `transform`, `opacity` y `stroke-dashoffset`. Sin librerías de animación (0 KB extra).
 
 ## Fotografía
-Dirección: luz natural cálida, consultorio real con plantas y libros, ropa sin bata. **Incorporada:** `public/images/nicolas-espindola-retrato.webp` (4:5, «Sobre mí»), `nicolas-espindola-perfil.webp` (avatar del hero) y `og-foto.jpg` (imagen para compartir en redes y WhatsApp, generada en `app/opengraph-image.tsx`).
+Dirección: luz natural cálida, consultorio real con plantas y libros, ropa sin bata. **Incorporada:** `public/images/nicolas-espindola-retrato.webp` (4:5, «Sobre mí»), `nicolas-espindola-perfil.webp` (avatar del hero) y `og.png` (imagen para compartir en redes y WhatsApp, 1200×630, con la foto).

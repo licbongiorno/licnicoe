@@ -11,6 +11,8 @@ import { JsonLd } from "@/components/JsonLd";
 import { baseGraph } from "@/lib/schema";
 import { Intro } from "@/components/Intro";
 import { introHeadScript } from "@/lib/intro";
+import { asset } from "@/lib/asset";
+import { MobileActionBar } from "@/components/MobileActionBar";
 
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
@@ -39,8 +41,9 @@ export const metadata: Metadata = {
     siteName: site.person.displayName,
     title,
     description,
+    images: [{ url: "/images/og.png", width: 1200, height: 630, alt: "Lic. Nicolás Espíndola, psicólogo MP 11138, en su consultorio de Córdoba" }],
   },
-  twitter: { card: "summary_large_image", title, description },
+  twitter: { card: "summary_large_image", title, description, images: ["/images/og.png"] },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false },
   creator: site.designer.name,
@@ -55,7 +58,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="es-AR" className={`${cormorant.variable} ${manrope.variable}`} suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: introHeadScript }} />
-        <link rel="preload" href="/brand/tree-sprite.svg" as="image" type="image/svg+xml" />
+        <link rel="preload" href={asset("/brand/tree-sprite.svg")} as="image" type="image/svg+xml" />
       </head>
       <body>
         <noscript>
@@ -70,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="contenido">{children}</main>
         <Footer />
         <FloatingWhatsApp />
+        <MobileActionBar />
         <RevealObserver />
         <Analytics />
       </body>

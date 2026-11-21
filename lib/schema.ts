@@ -51,7 +51,7 @@ export function baseGraph() {
         description: "Psicoterapia psicoanalítica e integrativa para adultos, presencial en Córdoba y online en español. Orientación y desarrollo profesional.",
         url: site.url,
         logo: `${site.url}/brand/favicon-512.png`,
-        image: [`${site.url}/opengraph-image`, ...(site.photos.portrait ? [`${site.url}${site.photos.portrait}`] : [])],
+        image: [`${site.url}/images/og.png`, ...(site.photos.portrait ? [`${site.url}${site.photos.portrait}`] : [])],
         hasMap: site.location.mapsSearchUrl,
         slogan: site.brand.tagline,
         serviceType: ["Psicoterapia para adultos", "Psicoterapia online", "Orientación profesional"],

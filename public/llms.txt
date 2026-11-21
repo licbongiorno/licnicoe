@@ -21,4 +21,8 @@
 - [Inicio](/): presentación, enfoque, áreas de consulta, modalidades y preguntas frecuentes
 - [Psicólogo online en español](/terapia-online-en-espanol): cómo funciona la terapia online y la atención desde el exterior
 - [Orientación profesional](/orientacion-profesional): psicología laboral y desarrollo de carrera
+- [Blog](/blog): artículos sobre psicoterapia y terapia online
+- [Psicoterapia online en español: cómo funciona](/blog/psicoterapia-online-en-espanol-como-funciona)
+- [¿Qué significa comenzar un proceso terapéutico?](/blog/que-significa-comenzar-un-proceso-terapeutico)
+- [¿Cuándo es momento de consultar a un psicólogo?](/blog/cuando-es-momento-de-consultar-a-un-psicologo)
 - [Política de privacidad](/privacidad)
