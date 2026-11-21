@@ -16,7 +16,7 @@ components/              Header, Sections (todas las secciones), ContactButton, 
                          PageIntro, JsonLd, Analytics, Reveal
 public/brand/            logotipos e isotipos en SVG (horizontal, vertical, negativo, mono, favicon, avatar)
 public/llms.txt          ficha profesional para buscadores con IA
-scripts/                 generadores del logotipo (wordmark.py, brand.py)
+scripts/                 vectorización del árbol (trace_tree.py, tree_to_ts.py) y generadores del logotipo (wordmark.py, brand.py)
 .agents/skills/          skills instaladas con find-skills (ver docs/09)
 data/site.ts             ⭐ CONFIGURACIÓN CENTRAL (datos, WhatsApp, tarifas, fotos, enlaces)
 data/content.ts          todos los textos de la web
@@ -31,7 +31,9 @@ docs/                    estrategia, SEO, WhatsApp, blog, plan 90 días, cobros,
 Todo está en `data/site.ts`. Un valor `null` significa "pendiente" y **no se muestra**.
 - **WhatsApp:** `whatsapp.number` (formato `549` + área + número) y `whatsapp.enabled`.
 - **Tarifa internacional:** `fees.international.amount` / `confirmed`.
-- **Fotos:** copiar el retrato a `public/images/nicolas-espindola-retrato.jpg` y poner `photos.portrait: "/images/nicolas-espindola-retrato.jpg"`. Para el avatar del hero, una versión cuadrada en `photos.profile`.
+- **Fotos:** `photos.portrait` (retrato 4:5) y `photos.profile` (avatar cuadrado). Para cambiarlas, reemplazar los archivos en `public/images/` (y `og-foto.jpg`, que usa la imagen para compartir).
+- **Mapa:** `location.mapEmbedUrl` (mapa incrustado) y `location.directionsUrl` (botón «Cómo llegar»).
+- **Introducción animada:** `components/Intro.tsx`. Para quitarla, borrar `<Intro />` en `app/layout.tsx`.
 - **Google Business, Instagram, email:** `links.*`, `email`.
 - **Mapa:** pegar la URL de "Insertar mapa" de Google Maps en `location.mapEmbedUrl`.
 
@@ -81,7 +83,7 @@ Ver `docs/02-whatsapp-business.md`. Si se cambia de número, solo editar `data/s
 ## Checklist de publicación
 - [ ] Confirmar número de WhatsApp (hoy: +54 9 351 595 9914) y probar un botón desde el celular
 - [ ] Dominio comprado y conectado; `NEXT_PUBLIC_SITE_URL` actualizado
-- [ ] Retrato real cargado (`public/images/nicolas-espindola-retrato.jpg` + `site.photos.portrait`)
+- [x] Retrato real cargado (`public/images/nicolas-espindola-retrato.webp`)
 - [ ] Verificar el sitio en Bing Webmaster Tools y enviarlo a Brave Search (visibilidad en ChatGPT, Copilot y Claude)
 - [ ] Tarifa internacional confirmada o texto de "referencia" revisado
 - [ ] Revisar política de privacidad con asesoría legal
@@ -101,7 +103,7 @@ Ver `docs/02-whatsapp-business.md`. Si se cambia de número, solo editar `data/s
 
 ## Validación realizada
 - `npm run build`: OK, 10 rutas estáticas, sin errores de TypeScript.
-- Lighthouse 12 (móvil, servidor local de producción): Inicio 95 · 100 · 100 · 100; Terapia online 93 · 100 · 100 · 100. Volver a medir en el dominio final.
+- Lighthouse 12 (móvil, servidor local de producción, con la introducción activa): Inicio 94–98 · 100 · 100 · 100; Terapia online 97 · 100 · 100 · 100. Volver a medir en el dominio final.
 - Responsive verificado a 360, 390, 430, 768, 1024, 1440 y 1920 px; pruebas de menú, scrollspy, FAQ, teclado, movimiento reducido y sin JavaScript (detalle en `docs/09`).
 
 ## Documentación estratégica
