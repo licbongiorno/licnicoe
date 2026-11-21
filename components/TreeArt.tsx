@@ -17,33 +17,6 @@ const BEIGE = "#f3eadf";
 
 const d = (delay: number, dur?: number) => ({ "--d": `${delay}s`, ...(dur ? { "--dur": `${dur}s` } : {}) }) as CSSProperties;
 
-/* ---------- Raíces (Sobre mí): cuelgan desde una línea de suelo ---------- */
-export function RootsMotif({ className = "" }: { className?: string }) {
-  const paths = [
-    "M200 8 C 199 70, 214 120, 196 180 C 182 226, 206 270, 198 340 C 194 380, 202 420, 200 470",
-    "M198 10 C 182 60, 140 76, 116 114 C 92 150, 102 196, 72 230 C 56 248, 40 256, 22 280",
-    "M202 10 C 220 62, 262 78, 286 118 C 308 156, 296 198, 326 232 C 342 250, 360 258, 380 280",
-    "M116 114 C 132 150, 118 182, 138 214 C 152 236, 140 262, 152 296",
-    "M286 118 C 268 154, 284 184, 264 216 C 252 238, 266 264, 256 300",
-    "M196 180 C 174 196, 164 220, 168 252",
-    "M72 230 C 70 256, 58 272, 60 300",
-    "M326 232 C 330 258, 344 272, 340 302",
-    "M198 340 C 218 352, 226 376, 224 404",
-    "M152 296 C 146 320, 130 332, 128 360",
-    "M256 300 C 262 324, 278 336, 280 364",
-  ];
-  return (
-    <svg viewBox="0 0 400 480" fill="none" aria-hidden className={className}>
-      <path d="M0 8 H 400" stroke={LINE} strokeWidth="1" />
-      <g stroke={ROOT} strokeLinecap="round">
-        {paths.map((p, i) => (
-          <path key={p} d={p} strokeWidth={i < 3 ? 1.6 : 1.1} />
-        ))}
-      </g>
-    </svg>
-  );
-}
-
 /* ---------- Ramificación (Enfoque): una rama distinta por pilar ---------- */
 const branchGlyphs = [
   "M40 96 C 40 70, 36 52, 30 30 M36 58 C 46 50, 50 40, 52 26",

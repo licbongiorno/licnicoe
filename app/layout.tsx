@@ -43,6 +43,8 @@ export const metadata: Metadata = {
   twitter: { card: "summary_large_image", title, description },
   robots: { index: true, follow: true },
   formatDetection: { telephone: false },
+  creator: site.designer.name,
+  other: { designer: `${site.designer.name} · WhatsApp +54 9 ${site.designer.whatsappLabel}` },
   ...(process.env.NEXT_PUBLIC_GSC_VERIFICATION ? { verification: { google: process.env.NEXT_PUBLIC_GSC_VERIFICATION } } : {}),
 };
 
@@ -57,7 +59,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body>
         <noscript>
-          <style>{`.phrase .rise,.phrase .fall,.blossom .bud{opacity:1}.phrase .grow{stroke-dashoffset:0}.phrase .ground-draw{transform:none}`}</style>
+          <style>{`.phrase .rise,.phrase .fall,.blossom .bud{opacity:1}.phrase .grow{stroke-dashoffset:0}.phrase .ground-draw{transform:none}.phrase .br-clip{transform:none}`}</style>
         </noscript>
         <a href="#contenido" className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-3 focus:text-paper">
           Saltar al contenido

@@ -67,3 +67,28 @@ export function BrandTree({ className = "", animate = false, color = "#2c3f37", 
     </svg>
   );
 }
+
+/**
+ * Solo las raíces del árbol de marca (lo que está bajo la línea de suelo).
+ * Se usa en «Sobre mí» y en la sección de la frase, para que todas las raíces
+ * de la web sean las mismas del logo.
+ * animate: las raíces bajan desde el suelo cuando la sección entra en pantalla (.is-visible).
+ */
+export function BrandRoots({ className = "", animate = false, color = "#2c3f37", ground = "#788f80" }: { className?: string; animate?: boolean; color?: string; ground?: string }) {
+  const uid = useId().replace(/:/g, "");
+  const clip = `roots-only-${uid}`;
+  return (
+    <svg viewBox={`70 ${GROUND_Y - 1} 150 37`} className={className} fill={color} aria-hidden>
+      <defs>
+        <clipPath id={clip}>
+          <rect className={animate ? "br-clip" : undefined} x="0" y={GROUND_Y} width="277" height={146 - GROUND_Y} />
+        </clipPath>
+      </defs>
+      <path d={`M70 ${GROUND_Y} H 220`} stroke={ground} strokeWidth="0.5" strokeLinecap="round" />
+      <g clipPath={`url(#${clip})`}>
+        <use href={`${SPRITE}#tr-trunk`} />
+        <use href={`${SPRITE}#tr-roots`} />
+      </g>
+    </svg>
+  );
+}

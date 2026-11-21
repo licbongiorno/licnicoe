@@ -96,6 +96,7 @@ export function baseGraph() {
         name: site.person.displayName,
         inLanguage: "es",
         publisher: { "@id": personId },
+        creator: { "@type": "Person", name: site.designer.name, description: "Diseño y desarrollo web" },
       },
     ],
   };
