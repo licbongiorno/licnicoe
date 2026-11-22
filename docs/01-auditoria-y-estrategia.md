@@ -23,7 +23,7 @@
 - Tarifa internacional definitiva (USD 40 es objetivo, se muestra como "referencia, a confirmar").
 - Honorarios en Argentina (no se publican).
 - Fotos profesionales (retrato, consultorio, perfil). La foto actual es de baja resolución (168×126 px) y se usa solo como avatar pequeño provisorio.
-- Dominio definitivo (placeholder: `nicolasespindola.com.ar`).
+- Dominio definitivo: **www.espaciodeanalisis.com.ar** (confirmado; el dominio raíz redirige a www).
 - Enlace al perfil de Google Business, email profesional, Instagram/LinkedIn.
 - Denominación exacta del colegio que otorga la matrícula (se asumió "Colegio de Psicólogos de la Provincia de Córdoba" en los datos estructurados; **verificar**).
 - Plataforma de videollamada y medio de cobro internacional.

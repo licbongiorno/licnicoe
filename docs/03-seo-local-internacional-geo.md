@@ -38,7 +38,7 @@ Decisión: **no** crear páginas por país ("psicólogo online en Madrid") mient
 5. **Atributos:** "Citas online", "Solo con cita previa".
 6. **Horario:** L–V 8:00–20:00 (igual que la web).
 7. **Dirección:** Posadas 331, Juniors, Córdoba. Verificar que el pin esté en la puerta correcta. La web ya incrusta un mapa por dirección; si se quiere mostrar exactamente la ficha de Google Business, reemplazar `site.location.mapEmbedUrl` por la URL de "Compartir → Insertar un mapa" del perfil.
-8. **Sitio web:** dominio definitivo. **Botón de chat/WhatsApp** con el mismo número.
+8. **Sitio web:** https://www.espaciodeanalisis.com.ar. **Botón de chat/WhatsApp** con el mismo número.
 9. **Fotos reales:** fachada, sala de espera, consultorio (sin pacientes), retrato. Nada de stock.
 10. **Reseñas:** se pueden pedir, pero con cuidado ético: nunca como condición, sin incentivos, sin responder revelando que la persona es paciente (secreto profesional). Considerar no pedirlas activamente a pacientes en tratamiento; revisar el código de ética del Colegio.
 11. **Publicaciones:** 1 por mes (artículo del blog, modalidad online, horarios).
