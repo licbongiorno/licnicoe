@@ -15,7 +15,7 @@ App gratuita (Android/iOS). Permite separar lo profesional de lo personal, mensa
 - **Descripción (máx. 256):** Psicólogo clínico y laboral · MP 11138 · UNC. Psicoterapia psicoanalítica e integrativa para adultos. Presencial en Córdoba (barrio Juniors) y online en español para Argentina y el exterior.
 - **Dirección:** Posadas 331, barrio Juniors, Córdoba
 - **Horario:** Lunes a viernes, 8:00 a 20:00
-- **Sitio web:** el dominio definitivo
+- **Sitio web:** https://www.espaciodeanalisis.com.ar
 - **Foto:** retrato profesional real (no logo), fondo neutro
 
 ### Mensaje de bienvenida (automático, primera vez)
