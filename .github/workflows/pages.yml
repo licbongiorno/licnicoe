@@ -31,7 +31,8 @@ jobs:
         env:
           GITHUB_PAGES: "true"
           NEXT_PUBLIC_BASE_PATH: /licnicoe
-          NEXT_PUBLIC_SITE_URL: https://licbongiorno.github.io/licnicoe
+          # canonical al dominio principal: esta copia no compite con www.espaciodeanalisis.com.ar en Google
+          NEXT_PUBLIC_SITE_URL: https://www.espaciodeanalisis.com.ar
       - run: touch out/.nojekyll
       - uses: actions/upload-pages-artifact@v3
         with:
